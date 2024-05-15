@@ -57,7 +57,7 @@ const Content = () => {
 			<Separator className="w-1/2 mx-auto bg-white my-4" />
 
 			<Label className="text-center text-xl py-4 pb-8">
-				Few of the technologies I have worked with
+				Few of the technologies I work with
 			</Label>
 
 			<div className="mx-auto flex grid grid-cols-4 md:grid-cols-6 gap-4 md:gap-8">
