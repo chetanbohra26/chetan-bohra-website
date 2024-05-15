@@ -45,7 +45,7 @@ const Content = () => {
 			</Label>
 
 			<Label className="text-center text-2xl py-2">
-				I have been working as a software developer since 4 years
+				I have been a software developer since 4 years
 			</Label>
 
 			<Label className="text-center text-xl pb-4">
