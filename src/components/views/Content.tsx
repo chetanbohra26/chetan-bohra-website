@@ -60,7 +60,7 @@ const Content = () => {
 				Few of the technologies I work with
 			</Label>
 
-			<div className="mx-auto flex grid grid-cols-4 md:grid-cols-6 gap-8 md:gap-12">
+			<div className="mx-auto flex grid grid-cols-4 md:grid-cols-6 gap-4 md:gap-12">
 				{icons.map((icon, index) => (
 					<Tooltip key={index}>
 						<TooltipTrigger>
@@ -73,7 +73,7 @@ const Content = () => {
 							</div>
 						</TooltipTrigger>
 						<TooltipContent
-							className="bg-dark text-white"
+							className="bg-dark text-white hidden md:block"
 							side="bottom"
 						>
 							<span>{icon.alt}</span>
