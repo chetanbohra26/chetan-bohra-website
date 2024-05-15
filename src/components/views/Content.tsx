@@ -66,7 +66,7 @@ const Content = () => {
 						<TooltipTrigger>
 							<div className="rounded-full bg-white">
 								<img
-									className="h-20 w-20 p-3 sm:p-4 transition ease-in-out hover:p-3"
+									className="h-20 w-20 p-4 transition ease-in-out hover:p-3"
 									src={icon.img}
 									alt={icon.alt}
 								/>
