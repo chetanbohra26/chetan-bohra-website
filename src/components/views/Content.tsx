@@ -34,7 +34,7 @@ const icons = [
 const Content = () => {
 	return (
 		<div className="flex flex-col flex-grow scroll-smooth px-4 py-2 mx-auto">
-			<Avatar className="w-[300px] h-[300px] mx-auto my-8">
+			<Avatar className="w-[300px] h-[300px] mx-auto my-4">
 				<AvatarImage src={profileImg} />
 				<AvatarFallback>Chetan</AvatarFallback>
 			</Avatar>
@@ -48,19 +48,19 @@ const Content = () => {
 				I am a software developer with a passion to build great products
 			</Label>
 
-			<Label className="text-center text-xl pb-4">
+			<Label className="text-center text-xl pb-2">
 				Currently, I work at{' '}
 				<a href="https://squareboat.com" target="_blank">
 					<span className="font-bold">Squareboat</span>
 				</a>
 			</Label>
-			<Separator className="w-1/2 mx-auto bg-white my-4" />
+			<Separator className="w-2/3 mx-auto bg-white my-2" />
 
-			<Label className="text-center text-xl py-4 pb-8">
+			<Label className="text-center text-xl pb-8">
 				Few of the technologies I work with
 			</Label>
 
-			<div className="mx-auto flex grid grid-cols-4 md:grid-cols-6 gap-4 md:gap-8">
+			<div className="mx-auto flex grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 gap-4 md:gap-8">
 				{icons.map((icon, index) => (
 					<div className="flex flex-col gap-2" key={index}>
 						<div className="rounded-full bg-white flex-grow mx-auto">
