@@ -15,7 +15,6 @@ import mongoImg from '@/assets/mongo.svg';
 import socketIoImg from '@/assets/socket-io.svg';
 import gitImg from '@/assets/git.svg';
 import { Separator } from '../ui/separator';
-import { Tooltip, TooltipTrigger, TooltipContent } from '../ui/tooltip';
 
 const icons = [
 	{ img: nestImg, alt: 'NestJS' },
@@ -34,14 +33,15 @@ const icons = [
 
 const Content = () => {
 	return (
-		<div className="flex flex-col flex-grow scroll-smooth px-4 py-4 mx-auto">
+		<div className="flex flex-col flex-grow scroll-smooth px-4 py-2 mx-auto">
 			<Avatar className="w-[300px] h-[300px] mx-auto my-8">
 				<AvatarImage src={profileImg} />
 				<AvatarFallback>Chetan</AvatarFallback>
 			</Avatar>
 
 			<Label className="text-center text-4xl pt-4">
-				Hello, I am Chetan Bohra!
+				<span className="italic">Hello</span>, I am{' '}
+				<span className="font-mono text-green-600">Chetan Bohra!</span>
 			</Label>
 
 			<Label className="text-center text-2xl py-2">
@@ -60,25 +60,18 @@ const Content = () => {
 				Few of the technologies I work with
 			</Label>
 
-			<div className="mx-auto flex grid grid-cols-4 md:grid-cols-6 gap-4 md:gap-12">
+			<div className="mx-auto flex grid grid-cols-4 md:grid-cols-6 gap-4 md:gap-8">
 				{icons.map((icon, index) => (
-					<Tooltip key={index}>
-						<TooltipTrigger>
-							<div className="rounded-full bg-white">
-								<img
-									className="h-20 w-20 p-4 transition ease-in-out hover:p-3"
-									src={icon.img}
-									alt={icon.alt}
-								/>
-							</div>
-						</TooltipTrigger>
-						<TooltipContent
-							className="bg-dark text-white hidden md:block"
-							side="bottom"
-						>
-							<span>{icon.alt}</span>
-						</TooltipContent>
-					</Tooltip>
+					<div className="flex flex-col gap-2" key={index}>
+						<div className="rounded-full bg-white flex-grow mx-auto">
+							<img
+								className="h-20 w-20 p-4 transition ease-in-out hover:p-3"
+								src={icon.img}
+								alt={icon.alt}
+							/>
+						</div>
+						<Label className="text-center">{icon.alt}</Label>
+					</div>
 				))}
 			</div>
 		</div>
