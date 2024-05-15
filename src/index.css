@@ -3,6 +3,11 @@
 @tailwind utilities;
 
 @layer base {
+	@font-face {
+		font-family: 'Virgil';
+		src: local('Virgil'), url(./Virgil.woff2) format('woff2');
+	}
+
 	:root {
 		--background: 0 0% 100%;
 		--foreground: 240 10% 3.9%;

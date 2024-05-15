@@ -13,7 +13,8 @@ import mysqlImg from '@/assets/mysql.svg';
 import pgImg from '@/assets/postgresql.svg';
 import mongoImg from '@/assets/mongo.svg';
 import socketIoImg from '@/assets/socket-io.svg';
-import gitImg from '@/assets/git.svg';
+import { Button } from '../ui/button';
+import { ArrowRight, PlusCircleIcon } from 'lucide-react';
 import { Separator } from '../ui/separator';
 
 const icons = [
@@ -28,51 +29,79 @@ const icons = [
 	{ img: pgImg, alt: 'Postgres' },
 	{ img: mongoImg, alt: 'Mongo DB' },
 	{ img: socketIoImg, alt: 'Socket.io' },
-	{ img: gitImg, alt: 'Git' },
+	{
+		icon: (
+			<PlusCircleIcon className="h-20 w-20 p-2 fill-black hover:scale-125 transition ease-in-out duration-200" />
+		),
+		alt: 'More to come',
+	},
 ];
 
 const Content = () => {
 	return (
-		<div className="flex flex-col flex-grow scroll-smooth px-4 py-2 mx-auto">
-			<Avatar className="w-[300px] h-[300px] mx-auto my-4">
-				<AvatarImage src={profileImg} />
-				<AvatarFallback>Chetan</AvatarFallback>
-			</Avatar>
-
-			<Label className="text-center text-4xl pt-4">
-				<span className="italic">Hello</span>, I am{' '}
-				<span className="font-mono text-green-600">Chetan Bohra!</span>
-			</Label>
-
-			<Label className="text-center text-2xl py-2">
-				I am a software developer with a passion to build great products
-			</Label>
-
-			<Label className="text-center text-xl pb-2">
-				Currently, I work at{' '}
-				<a href="https://squareboat.com" target="_blank">
-					<span className="font-bold">Squareboat</span>
-				</a>
-			</Label>
-			<Separator className="w-2/3 mx-auto bg-white my-2" />
-
-			<Label className="text-center text-xl pb-8">
-				Few of the technologies I work with
-			</Label>
-
-			<div className="mx-auto flex grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 gap-4 md:gap-8">
-				{icons.map((icon, index) => (
-					<div className="flex flex-col gap-2" key={index}>
-						<div className="rounded-full bg-white flex-grow mx-auto">
-							<img
-								className="h-20 w-20 p-4 transition ease-in-out hover:p-3"
-								src={icon.img}
-								alt={icon.alt}
-							/>
-						</div>
-						<Label className="text-center">{icon.alt}</Label>
+		<div className="flex flex-col flex-grow scroll-smooth px-4 py-2">
+			<div className="flex">
+				<div className="flex grid grid-cols-1 md:grid-cols-2">
+					<div>
+						<Avatar className="w-[300px] h-[300px] mx-auto my-4">
+							<AvatarImage src={profileImg} />
+							<AvatarFallback>Chetan</AvatarFallback>
+						</Avatar>
 					</div>
-				))}
+
+					<div className="flex flex-col justify-center">
+						<Label className="font-virgil text-center md:text-start text-4xl pt-4">
+							<span className="italic">Hello,</span> I am{' '}
+							<span className="text-green-500 hover:text-lime-400">
+								Chetan Bohra!
+							</span>
+						</Label>
+
+						<Label className="text-center md:text-start text-2xl py-2">
+							I am a software developer with a passion to build
+							great products. Open to discuss anything tech
+							related.
+						</Label>
+
+						<Button
+							className="mx-auto md:mx-0 md:mr-auto my-4 bg-black gap-2 transition ease-in-out duration-500"
+							variant="outline"
+							onClick={() =>
+								window.open('mailto:chetanbohra26@gmail.com')
+							}
+						>
+							Discuss over mail
+							<ArrowRight />
+						</Button>
+					</div>
+				</div>
+			</div>
+
+			<Separator className="w-1/2 mx-auto my-8" />
+
+			<div className="flex flex-col">
+				<Label className="text-center text-xl pb-8">
+					These are few of the tools in my toolbelt
+				</Label>
+
+				<div className="mx-auto flex grid grid-cols-3 sm:grid-col-4 md:grid-cols-6 gap-4 md:gap-8">
+					{icons.map((icon, index) => (
+						<div className="flex flex-col gap-2" key={index}>
+							<div className="rounded-full bg-white flex-grow mx-auto">
+								{icon.icon || (
+									<img
+										className="h-20 w-20 p-4 hover:scale-125 transition ease-in-out duration-200"
+										src={icon.img}
+										alt={icon.alt}
+									/>
+								)}
+							</div>
+							<Label className="text-center font-plain">
+								{icon.alt}
+							</Label>
+						</div>
+					))}
+				</div>
 			</div>
 		</div>
 	);

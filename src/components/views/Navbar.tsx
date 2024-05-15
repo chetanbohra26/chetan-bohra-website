@@ -11,12 +11,12 @@ const Navbar = () => {
 			<div className="mx-auto max-w-7xl px-2">
 				<div className="relative flex h-16 items-center justify-between">
 					<div className="flex items-center justify-start ml-4">
-						<LightbulbIcon className="h-8 w-8 hover:scale-125 transition ease-in-out hover:fill-yellow-500" />
+						<LightbulbIcon className="h-8 w-8 hover:scale-125 hover:fill-yellow-500 transition ease-in-out duration-300" />
 					</div>
 					{/* <Label className="text-center text-lg">
 						Hi, I am Chetan Bohra
 					</Label> */}
-					<div className="flex flex-column">
+					<div className="flex">
 						<a
 							href="https://www.linkedin.com/in/chetanbohra26"
 							target="_blank"
