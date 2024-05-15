@@ -41,7 +41,7 @@ const Content = () => {
 			</Avatar>
 
 			<Label className="text-center text-4xl pt-4">
-				Hi, I am Chetan Bohra
+				Hello, I am Chetan Bohra!
 			</Label>
 
 			<Label className="text-center text-2xl py-2">
