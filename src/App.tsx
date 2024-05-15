@@ -3,9 +3,9 @@ import Navbar from './components/views/Navbar';
 
 function App() {
 	return (
-		<div className="bg-zinc-950 text-white flex flex-col h-screen scroll-none">
+		<div className="text-white flex flex-col h-screen scroll-none">
 			<Navbar />
-			<div className="container mx-auto px-0 flex flex-col flex-grow scroll-smooth">
+			<div className="bg-zinc-950 px-0 flex flex-col flex-grow scroll-smooth">
 				<Content />
 			</div>
 		</div>

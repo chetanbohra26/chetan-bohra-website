@@ -34,7 +34,7 @@ const icons = [
 
 const Content = () => {
 	return (
-		<div className="flex flex-col flex-grow scroll-smooth bg-zinc-950 px-4">
+		<div className="flex flex-col flex-grow scroll-smooth px-4 py-4 mx-auto">
 			<Avatar className="w-[300px] h-[300px] mx-auto my-8">
 				<AvatarImage src={profileImg} />
 				<AvatarFallback>Chetan</AvatarFallback>
@@ -60,7 +60,7 @@ const Content = () => {
 				Few of the technologies I work with
 			</Label>
 
-			<div className="mx-auto flex grid grid-cols-4 md:grid-cols-6 gap-4 md:gap-8">
+			<div className="mx-auto flex grid grid-cols-4 md:grid-cols-6 gap-8 md:gap-12">
 				{icons.map((icon, index) => (
 					<Tooltip key={index}>
 						<TooltipTrigger>
