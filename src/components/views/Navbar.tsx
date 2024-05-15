@@ -1,24 +1,21 @@
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
-import { Label } from '@/components/ui/label';
-import avatarImg from '@/assets/avatar.jpg';
+// import { Label } from '@/components/ui/label';
 import linkedinIconImg from '@/assets/linkedin-in.svg';
 import githubIconImg from '@/assets/github.svg';
 import mailIconImg from '@/assets/envelope-regular.svg';
+import { LightbulbIcon } from 'lucide-react';
 
 const Navbar = () => {
 	return (
-		<nav className="bg-black border-b border-gray-900 shadow-lg shadow-stone-900">
+		<nav className="bg-black border-b border-gray-900">
 			<div className="mx-auto max-w-7xl px-2">
 				<div className="relative flex h-16 items-center justify-between">
 					<div className="flex items-center justify-start ml-4">
-						<Avatar className="h-10 w-10 hover:scale-125 transition ease-in-out">
-							<AvatarImage src={avatarImg} />
-							<AvatarFallback>Linkedin</AvatarFallback>
-						</Avatar>
+						<LightbulbIcon className="h-8 w-8 hover:scale-125 transition ease-in-out hover:fill-yellow-500" />
 					</div>
-					<Label className="text-center text-lg">
-						Hello, I am Chetan Bohra
-					</Label>
+					{/* <Label className="text-center text-lg">
+						Hi, I am Chetan Bohra
+					</Label> */}
 					<div className="flex flex-column">
 						<a
 							href="https://www.linkedin.com/in/chetanbohra26"
