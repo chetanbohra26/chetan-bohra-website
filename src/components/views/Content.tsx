@@ -45,11 +45,11 @@ const Content = () => {
 			</Label>
 
 			<Label className="text-center text-2xl py-2">
-				I have been a software developer since 4 years
+				I am a software developer with a passion to build great products
 			</Label>
 
 			<Label className="text-center text-xl pb-4">
-				Current working at{' '}
+				Currently, I work at{' '}
 				<a href="https://squareboat.com" target="_blank">
 					<span className="font-bold">Squareboat</span>
 				</a>
