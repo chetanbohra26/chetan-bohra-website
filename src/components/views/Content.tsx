@@ -16,6 +16,7 @@ import socketIoImg from '@/assets/socket-io.svg';
 import { Button } from '../ui/button';
 import { ArrowRight, PlusCircleIcon } from 'lucide-react';
 import { Separator } from '../ui/separator';
+import { TypeAnimation } from 'react-type-animation';
 
 const icons = [
 	{ img: nestImg, alt: 'NestJS' },
@@ -37,6 +38,19 @@ const icons = [
 	},
 ];
 
+const sequence = [
+	'Chetan Bohra',
+	2000,
+	'a Fullstack dev',
+	2000,
+	'a Backend dev',
+	2000,
+	'a Frontend dev',
+	2000,
+	'a talent you need',
+	2000,
+];
+
 const Content = () => {
 	return (
 		<div className="flex flex-col flex-grow scroll-smooth px-4 py-2">
@@ -53,7 +67,10 @@ const Content = () => {
 						<Label className="font-virgil text-center md:text-start text-4xl pt-4">
 							<span className="italic">Hello,</span> I am{' '}
 							<span className="text-green-500 hover:text-lime-400">
-								Chetan Bohra!
+								<TypeAnimation
+									sequence={sequence}
+									repeat={Infinity}
+								/>
 							</span>
 						</Label>
 
