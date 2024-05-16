@@ -41,9 +41,9 @@ const Content = () => {
 	return (
 		<div className="flex flex-col flex-grow scroll-smooth px-4 py-2">
 			<div className="flex">
-				<div className="flex grid grid-cols-1 md:grid-cols-2">
-					<div>
-						<Avatar className="w-[300px] h-[300px] mx-auto my-4">
+				<div className="flex grid grid-cols-1 md:grid-cols-2 my-2">
+					<div className="border-dashed border-2 mx-auto p-2 rounded-full">
+						<Avatar className="w-[300px] h-[300px] mx-auto">
 							<AvatarImage src={profileImg} />
 							<AvatarFallback>Chetan</AvatarFallback>
 						</Avatar>
@@ -77,14 +77,14 @@ const Content = () => {
 				</div>
 			</div>
 
-			<Separator className="w-1/2 mx-auto my-8" />
+			<Separator className="w-2/3 mx-auto my-8 bg-slate-800" />
 
 			<div className="flex flex-col">
 				<Label className="text-center text-xl pb-8">
 					These are few of the tools in my toolbelt
 				</Label>
 
-				<div className="mx-auto flex grid grid-cols-3 sm:grid-col-4 md:grid-cols-6 gap-4 md:gap-8">
+				<div className="mx-auto flex grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 gap-4 md:gap-8">
 					{icons.map((icon, index) => (
 						<div className="flex flex-col gap-2" key={index}>
 							<div className="rounded-full bg-white flex-grow mx-auto">
