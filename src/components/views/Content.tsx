@@ -81,7 +81,7 @@ const Content = () => {
 
 			<div className="flex flex-col">
 				<Label className="text-center text-xl pb-8">
-					These are few of the tools in my toolbelt
+					These are few of my magic ingredients
 				</Label>
 
 				<div className="mx-auto flex grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 gap-4 md:gap-8">
