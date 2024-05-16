@@ -20,6 +20,7 @@ const Navbar = () => {
 						<a
 							href="https://www.linkedin.com/in/chetanbohra26"
 							target="_blank"
+							rel="noreferrer"
 						>
 							<Avatar className="h-8 w-8 p-1.5 mr-2 hover:scale-125 transition ease-in-out">
 								<AvatarImage src={linkedinIconImg} />
@@ -29,6 +30,7 @@ const Navbar = () => {
 						<a
 							href="https://github.com/chetanbohra26"
 							target="_blank"
+							rel="noreferrer"
 						>
 							<Avatar className="h-8 w-8 p-1.5 mr-2 hover:scale-125 transition ease-in-out">
 								<AvatarImage src={githubIconImg} />
@@ -38,6 +40,7 @@ const Navbar = () => {
 						<a
 							href="mailto:chetanbohra26@gmail.com"
 							target="_blank"
+							rel="noreferrer"
 						>
 							<Avatar className="h-8 w-8 p-1.5 mr-4 hover:scale-125 transition ease-in-out">
 								<AvatarImage src={mailIconImg} />
