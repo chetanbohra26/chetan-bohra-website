@@ -1,7 +1,7 @@
 import { Avatar, AvatarFallback, AvatarImage } from '../ui/avatar';
 import { Label } from '../ui/label';
 
-import profileImg from '@/assets/photo_touched.webp';
+import profileImg from '@/assets/photo_me.webp';
 import nestImg from '@/assets/nestjs.svg';
 import nodeImg from '@/assets/nodejs.svg';
 import reactImg from '@/assets/react.svg';
