@@ -13,7 +13,6 @@ import mysqlImg from '@/assets/mysql.svg';
 import pgImg from '@/assets/postgresql.svg';
 import mongoImg from '@/assets/mongo.svg';
 import socketIoImg from '@/assets/socket-io.svg';
-import { Button } from '../ui/button';
 import { ArrowRight, PlusCircleIcon } from 'lucide-react';
 import { Separator } from '../ui/separator';
 import { TypeAnimation } from 'react-type-animation';
@@ -81,16 +80,13 @@ const Content = () => {
 							related.
 						</Label>
 
-						<Button
-							className="mx-auto md:mx-0 md:mr-auto my-4 bg-black gap-2 transition ease-in-out duration-500"
-							variant="outline"
-							onClick={() =>
-								window.open('mailto:chetanbohra26@gmail.com')
-							}
+						<a
+							className="mx-auto md:mx-0 md:mr-auto my-4 bg-black gap-2 transition ease-in-out duration-500 bg-black text-white hover:bg-white hover:text-black border flex p-2 rounded"
+							href="#calendly"
 						>
-							Discuss over mail
+							Discuss over call
 							<ArrowRight />
-						</Button>
+						</a>
 					</div>
 				</div>
 			</div>
@@ -124,14 +120,12 @@ const Content = () => {
 
 			<Separator className="w-2/3 mx-auto mt-8 bg-slate-800" />
 
-			<div className="flex scroll-hidden justify-center">
+			<div className="flex scroll-hidden justify-center" id="calendly">
 				<InlineWidget
 					url="https://calendly.com/chetanbohra26/30min"
 					styles={{
 						height: '1000px',
 						width: '100%',
-						borderRadius: 5,
-						backgroundColor: '#000',
 					}}
 				/>
 			</div>

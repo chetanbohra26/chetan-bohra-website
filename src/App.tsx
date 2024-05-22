@@ -3,7 +3,7 @@ import Navbar from './components/views/Navbar';
 
 function App() {
 	return (
-		<div className="text-white flex flex-col h-screen scroll-none">
+		<div className="text-white flex flex-col h-screen">
 			<Navbar />
 			<div className="bg-zinc-950 px-0 flex flex-col flex-grow scroll-smooth">
 				<Content />
