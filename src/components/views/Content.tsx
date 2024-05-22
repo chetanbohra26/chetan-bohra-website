@@ -17,6 +17,7 @@ import { Button } from '../ui/button';
 import { ArrowRight, PlusCircleIcon } from 'lucide-react';
 import { Separator } from '../ui/separator';
 import { TypeAnimation } from 'react-type-animation';
+import { InlineWidget } from 'react-calendly';
 
 const icons = [
 	{ img: nestImg, alt: 'NestJS' },
@@ -96,7 +97,7 @@ const Content = () => {
 
 			<Separator className="w-2/3 mx-auto my-8 bg-slate-800" />
 
-			<div className="flex flex-col">
+			<div className="flex flex-col mb-8">
 				<Label className="text-center text-xl pb-8">
 					These are few of my magic ingredients
 				</Label>
@@ -119,6 +120,20 @@ const Content = () => {
 						</div>
 					))}
 				</div>
+			</div>
+
+			<Separator className="w-2/3 mx-auto mt-8 bg-slate-800" />
+
+			<div className="flex scroll-hidden justify-center">
+				<InlineWidget
+					url="https://calendly.com/chetanbohra26/30min"
+					styles={{
+						height: '1000px',
+						width: '100%',
+						borderRadius: 5,
+						backgroundColor: '#000',
+					}}
+				/>
 			</div>
 		</div>
 	);
