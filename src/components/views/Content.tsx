@@ -56,7 +56,7 @@ const Content = () => {
 		<div className="flex flex-col flex-grow scroll-smooth px-4 py-2">
 			<div className="flex">
 				<div className="flex grid grid-cols-1 md:grid-cols-2 my-2">
-					<div className="border-dashed border-2 mx-auto p-2 rounded-full">
+					<div className="border-dashed border-2 mx-auto p-1 rounded-full">
 						<Avatar className="w-[300px] h-[300px] mx-auto">
 							<AvatarImage src={profileImg} />
 							<AvatarFallback>Chetan</AvatarFallback>
@@ -90,6 +90,12 @@ const Content = () => {
 					</div>
 				</div>
 			</div>
+
+			<Separator className="w-2/3 mx-auto my-8 bg-slate-800" />
+
+			<Label className="text-center text-xl">
+				I currently work full-time as an SDE II at <a href='https://squareboat.com' target='_blank' style={{ color: '#2d94f3' }}>Squareboat</a>.
+			</Label>
 
 			<Separator className="w-2/3 mx-auto my-8 bg-slate-800" />
 
