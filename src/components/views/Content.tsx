@@ -94,7 +94,7 @@ const Content = () => {
 			<Separator className="w-2/3 mx-auto my-8 bg-slate-800" />
 
 			<Label className="text-center text-xl">
-				I currently work full-time as an SDE II at <a href='https://squareboat.com' target='_blank' className='text-green-500'>Squareboat</a>.
+				I currently work as an SDE II at <a href='https://squareboat.com' target='_blank' className='text-green-500'>Squareboat</a>.
 			</Label>
 
 			<Separator className="w-2/3 mx-auto my-8 bg-slate-800" />
