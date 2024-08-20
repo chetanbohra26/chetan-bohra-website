@@ -20,8 +20,8 @@ import { InlineWidget } from 'react-calendly';
 
 const icons = [
 	{ img: nestImg, alt: 'NestJS' },
-	{ img: nodeImg, alt: 'NodeJS' },
-	{ img: reactImg, alt: 'ReactJS' },
+	{ img: nodeImg, alt: 'Node.js' },
+	{ img: reactImg, alt: 'React.js' },
 	{ img: awsImg, alt: 'AWS' },
 	{ img: tensorflowImg, alt: 'Tensorflow' },
 	{ img: esImg, alt: 'Elastic Search' },
