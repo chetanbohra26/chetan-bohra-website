@@ -17,7 +17,7 @@ const projectList = [
     {
         title: 'Habitat Automations',
         link: 'https://habitatautomations.com',
-        role: 'Frontend developer - Bootstrap',
+        role: 'Layout revamp - Bootstrap',
         description: 'A startup based around home automations and security'
     },
     {
