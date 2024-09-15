@@ -1,3 +1,5 @@
+import { useState } from "react";
+
 import { Label } from "@radix-ui/react-label";
 import nestImg from '@/assets/nestjs.svg';
 import nodeImg from '@/assets/nodejs.svg';
@@ -12,28 +14,28 @@ import mongoImg from '@/assets/mongo.svg';
 import socketIoImg from '@/assets/socket-io.svg';
 import goImg from '@/assets/go.svg';
 
-const icons = [
-    { img: nestImg, alt: 'NestJS' },
-    { img: nodeImg, alt: 'Node.js' },
-    { img: reactImg, alt: 'React.js' },
-    { img: goImg, alt: 'Go' },
-    { img: awsImg, alt: 'AWS' },
-    { img: tensorflowImg, alt: 'Tensorflow' },
-    { img: esImg, alt: 'Elastic Search' },
-    { img: redisImg, alt: 'Redis' },
-    { img: mysqlImg, alt: 'MySQL' },
-    { img: pgImg, alt: 'Postgres' },
-    { img: mongoImg, alt: 'Mongo DB' },
-    { img: socketIoImg, alt: 'Socket.io' },
-    /*{
-        icon: (
-            <PlusCircleIcon className="h-20 w-20 p-2 fill-black hover:scale-125 transition ease-in-out duration-200" />
-        ),
-        alt: 'More to come',
-    },*/
-];
-
 const Technologies = () => {
+    const [icons] = useState([
+        { img: nestImg, alt: 'NestJS' },
+        { img: nodeImg, alt: 'Node.js' },
+        { img: reactImg, alt: 'React.js' },
+        { img: goImg, alt: 'Go' },
+        { img: awsImg, alt: 'AWS' },
+        { img: tensorflowImg, alt: 'Tensorflow' },
+        { img: esImg, alt: 'Elastic Search' },
+        { img: redisImg, alt: 'Redis' },
+        { img: mysqlImg, alt: 'MySQL' },
+        { img: pgImg, alt: 'Postgres' },
+        { img: mongoImg, alt: 'Mongo DB' },
+        { img: socketIoImg, alt: 'Socket.io' },
+        /*{
+            icon: (
+                <PlusCircleIcon className="h-20 w-20 p-2 fill-black hover:scale-125 transition ease-in-out duration-200" />
+            ),
+            alt: 'More to come',
+        },*/
+    ]);
+
     return (
         <div className="flex flex-col mb-8 mx-auto">
             <Label className="text-center text-xl pb-8">

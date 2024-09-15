@@ -1,8 +1,7 @@
-import { InlineWidget } from 'react-calendly';
-
 import Introduction from './Introduction';
 import Projects from './Projects';
 import Technologies from './Technologies';
+import ScheduleMeet from './ScheduleMeet';
 import { Label } from '../ui/label';
 import { Separator } from '../ui/separator';
 
@@ -34,15 +33,7 @@ const Content = () => {
 
 			<Separator className="w-2/3 mx-auto mt-8" />
 
-			<div className="flex scroll-hidden justify-center" id="calendly">
-				<InlineWidget
-					url="https://calendly.com/chetanbohra26/30min"
-					styles={{
-						height: '1000px',
-						width: '100%',
-					}}
-				/>
-			</div>
+			<ScheduleMeet />
 		</div>
 	);
 };
