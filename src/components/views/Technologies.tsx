@@ -21,13 +21,13 @@ const Technologies = () => {
         { img: reactImg, alt: 'React.js' },
         { img: goImg, alt: 'Go' },
         { img: awsImg, alt: 'AWS' },
-        { img: tensorflowImg, alt: 'Tensorflow' },
         { img: esImg, alt: 'Elastic Search' },
         { img: redisImg, alt: 'Redis' },
         { img: mysqlImg, alt: 'MySQL' },
         { img: pgImg, alt: 'Postgres' },
         { img: mongoImg, alt: 'Mongo DB' },
         { img: socketIoImg, alt: 'Socket.io' },
+        { img: tensorflowImg, alt: 'Tensorflow' },
         /*{
             icon: (
                 <PlusCircleIcon className="h-20 w-20 p-2 fill-black hover:scale-125 transition ease-in-out duration-200" />

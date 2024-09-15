@@ -45,9 +45,9 @@ const Projects = () => {
             <div className="flex grid grid-cols-1 sm:grid-cols-3 gap-4">
                 {
                     projects.map((proj, index) => (
-                        <Card className='mw-[300px] flex flex-col mb-2' key={index}>
+                        <Card className='mw-[300px] flex flex-col' key={index}>
                             <CardHeader>
-                                <CardTitle className="flex">
+                                <CardTitle className={`flex text-green-500 ${proj.link && 'hover:text-green-300'}`}>
                                     <a
                                         href={proj?.link}
                                         target="_blank"
