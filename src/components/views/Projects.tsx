@@ -38,14 +38,14 @@ const Projects = () => {
 
     return (
         <div className="flex flex-col mb-4 mx-auto">
-            <Label className="text-center text-xl mx-auto mb-4">
+            <Label className="text-center text-xl mb-4">
                 Cool stuff I worked on
             </Label>
 
-            <div className="flex grid grid-cols-1 sm:grid-cols-3 gap-4">
+            <div className="flex grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mx-auto">
                 {
                     projects.map((proj, index) => (
-                        <Card className='mw-[300px] flex flex-col' key={index}>
+                        <Card className='w-100 md:w-[300px] flex flex-col' key={index}>
                             <CardHeader>
                                 <CardTitle className={`flex text-green-500 ${proj.link && 'hover:text-green-300'}`}>
                                     <a
