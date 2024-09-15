@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { TypeAnimation } from "react-type-animation";
 import { ArrowRight } from "lucide-react";
 
@@ -5,20 +6,20 @@ import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
 import { Label } from "../ui/label";
 import profileImg from '@/assets/photo_me.webp';
 
-const sequence = [
-    'Chetan Bohra',
-    2000,
-    'a fullstack developer',
-    2000,
-    'a backend developer',
-    2000,
-    'a frontend developer',
-    2000,
-    'a talent you need',
-    2000,
-];
-
 const Introduction = () => {
+    const [sequence] = useState([
+        'Chetan Bohra',
+        2000,
+        'a fullstack developer',
+        2000,
+        'a backend developer',
+        2000,
+        'a frontend developer',
+        2000,
+        'a talent you need',
+        2000,
+    ]);
+
     return (
         <div className="flex grid grid-cols-1 md:grid-cols-2 my-2">
             <div className="border-dashed border-2 mx-auto p-1 rounded-full">
