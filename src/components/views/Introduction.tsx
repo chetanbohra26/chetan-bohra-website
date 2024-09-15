@@ -23,7 +23,7 @@ const Introduction = () => {
     return (
         <div className="flex grid grid-cols-1 md:grid-cols-2 my-2">
             <div className="border-dashed border-2 mx-auto p-1 rounded-full">
-                <Avatar className="w-[250px] h-[250px] sm:w-[300px] sm:h-[300px] mx-auto">
+                <Avatar className="w-[200px] h-[200px] xxs:w-[250px] xxs:h-[250px] sm:w-[300px] sm:h-[300px] mx-auto">
                     <AvatarImage src={profileImg} />
                     <AvatarFallback>Chetan</AvatarFallback>
                 </Avatar>

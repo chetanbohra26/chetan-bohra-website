@@ -42,7 +42,7 @@ const Technologies = () => {
                 These are few of my magic ingredients
             </Label>
 
-            <div className="mx-auto flex grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 gap-4 md:gap-8">
+            <div className="mx-auto flex grid grid-cols-2 xxs:grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 gap-4 md:gap-8">
                 {icons.map((icon, index) => (
                     <div className="flex flex-col gap-2" key={index}>
                         <div className="rounded-full bg-white flex-grow mx-auto">
