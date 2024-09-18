@@ -48,7 +48,7 @@ const Introduction = () => {
 
                 <a
                     className="mx-auto md:mx-0 md:mr-auto my-4 bg-black gap-2 transition ease-in-out duration-500 bg-black text-white hover:bg-white hover:text-black border flex p-2 rounded"
-                    href="#calendly"
+                    href="#schedule-meet"
                 >
                     Discuss over call
                     <ArrowRight />

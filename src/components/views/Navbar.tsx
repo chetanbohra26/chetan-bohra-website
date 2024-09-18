@@ -1,4 +1,5 @@
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip';
 // import { Label } from '@/components/ui/label';
 import linkedinIconImg from '@/assets/linkedin-in.svg';
 import githubIconImg from '@/assets/github.svg';
@@ -10,9 +11,20 @@ const Navbar = () => {
 		<nav className="bg-black border-b border-gray-900">
 			<div className="mx-auto max-w-7xl px-2">
 				<div className="relative flex h-16 items-center justify-between">
-					<div className="flex items-center justify-start ml-4">
-						<LightbulbIcon className="h-8 w-8 hover:scale-125 hover:fill-yellow-500 transition ease-in-out duration-300" />
-					</div>
+					<TooltipProvider>
+						<Tooltip delayDuration={200}>
+							<TooltipTrigger asChild>
+								<div className="flex items-center justify-start ml-4">
+									<a href='#schedule-meet'>
+										<LightbulbIcon className="h-8 w-8 hover:scale-125 hover:fill-yellow-500 transition ease-in-out duration-300" />
+									</a>
+								</div>
+							</TooltipTrigger>
+							<TooltipContent align='start'>
+								<p>Have an idea?</p>
+							</TooltipContent>
+						</Tooltip>
+					</TooltipProvider>
 					{/* <Label className="text-center text-lg">
 						Hi, I am Chetan Bohra
 					</Label> */}

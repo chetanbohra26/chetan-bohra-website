@@ -1,7 +1,7 @@
 import { InlineWidget } from "react-calendly"
 
 const ScheduleMeet = () => (
-    <div className="flex scroll-hidden justify-center" id="calendly">
+    <div className="flex scroll-hidden justify-center" id="schedule-meet">
         <InlineWidget
             url="https://calendly.com/chetanbohra26/30min"
             styles={{
