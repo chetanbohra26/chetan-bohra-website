@@ -17,7 +17,7 @@ const Content = () => {
 				<a
 					href='https://squareboat.com'
 					target='_blank'
-					className='text-green-500'
+					className='text-green-500 hover:text-lime-400'
 				>
 					Squareboat
 				</a>
