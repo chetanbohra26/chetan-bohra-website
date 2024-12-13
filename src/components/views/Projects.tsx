@@ -13,6 +13,7 @@ const Projects = () => {
         },
         {
             title: 'OTT Platform (Confidential)',
+            link: '/',
             role: 'Backend developer - Node.js, AWS',
             description: 'A well known content streaming platform used by millions of users across the globe'
         },
