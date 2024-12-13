@@ -14,7 +14,7 @@ const Navbar = () => {
 						<Tooltip delayDuration={200}>
 							<TooltipTrigger asChild>
 								<div className="flex items-center justify-start ml-4">
-									<a href='#schedule-meet'>
+									<a href='#schedule-meet' aria-label='Have an idea?'>
 										<LightbulbIcon className="h-8 w-8 hover:scale-125 hover:fill-yellow-500 transition ease-in-out duration-300" />
 									</a>
 								</div>
@@ -31,6 +31,7 @@ const Navbar = () => {
 										href="https://www.linkedin.com/in/chetanbohra26"
 										target="_blank"
 										rel="noreferrer"
+										aria-label='Linkedin'
 									>
 										<Avatar className="h-8 w-8 p-1.5 mr-2 hover:scale-125 transition ease-in-out">
 											<AvatarImage src={linkedinIconImg} alt='Linkedin' />
@@ -49,6 +50,7 @@ const Navbar = () => {
 										href="https://github.com/chetanbohra26"
 										target="_blank"
 										rel="noreferrer"
+										aria-label='Github'
 									>
 										<Avatar className="h-8 w-8 p-1.5 mr-2 hover:scale-125 transition ease-in-out">
 											<AvatarImage src={githubIconImg} alt='Github' />
@@ -66,6 +68,7 @@ const Navbar = () => {
 										href="mailto:chetanbohra26@gmail.com"
 										target="_blank"
 										rel="noreferrer"
+										aria-label='Mail'
 									>
 										<Avatar className="h-8 w-8 p-1.5 mr-4 hover:scale-125 transition ease-in-out">
 											<AvatarImage src={mailIconImg} alt='mail' />
