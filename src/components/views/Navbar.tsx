@@ -33,7 +33,7 @@ const Navbar = () => {
 										rel="noreferrer"
 									>
 										<Avatar className="h-8 w-8 p-1.5 mr-2 hover:scale-125 transition ease-in-out">
-											<AvatarImage src={linkedinIconImg} />
+											<AvatarImage src={linkedinIconImg} alt='Linkedin' />
 											<AvatarFallback>Linkedin</AvatarFallback>
 										</Avatar>
 									</a>
@@ -51,7 +51,7 @@ const Navbar = () => {
 										rel="noreferrer"
 									>
 										<Avatar className="h-8 w-8 p-1.5 mr-2 hover:scale-125 transition ease-in-out">
-											<AvatarImage src={githubIconImg} />
+											<AvatarImage src={githubIconImg} alt='Github' />
 											<AvatarFallback>Github</AvatarFallback>
 										</Avatar>
 									</a>
@@ -68,7 +68,7 @@ const Navbar = () => {
 										rel="noreferrer"
 									>
 										<Avatar className="h-8 w-8 p-1.5 mr-4 hover:scale-125 transition ease-in-out">
-											<AvatarImage src={mailIconImg} />
+											<AvatarImage src={mailIconImg} alt='mail' />
 											<AvatarFallback>Mail</AvatarFallback>
 										</Avatar>
 									</a>
