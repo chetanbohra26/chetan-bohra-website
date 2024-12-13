@@ -47,11 +47,12 @@ const Projects = () => {
                     projects.map((proj, index) => (
                         <Card className='w-100 md:w-[300px] flex flex-col' key={index}>
                             <CardHeader>
-                                <CardTitle className={`flex text-green-500 ${proj.link && 'hover:text-lime-400'}`}>
+                                <CardTitle className={`flex text-green-500 ${proj.link && 'hover:text-lime-300'}`}>
                                     <a
                                         href={proj?.link}
                                         target="_blank"
                                         rel="noreferrer"
+                                        aria-label={proj.title}
                                     >
                                         {proj.title}
                                     </a>

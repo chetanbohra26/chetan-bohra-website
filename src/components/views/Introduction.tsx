@@ -24,7 +24,7 @@ const Introduction = () => {
         <div className="flex grid grid-cols-1 md:grid-cols-2 my-2">
             <div className="border-dashed border-2 mx-auto p-1 rounded-full">
                 <Avatar className="w-[200px] h-[200px] xxs:w-[250px] xxs:h-[250px] sm:w-[300px] sm:h-[300px] mx-auto">
-                    <AvatarImage src={profileImg} />
+                    <AvatarImage src={profileImg} alt="Chetan" />
                     <AvatarFallback>Chetan</AvatarFallback>
                 </Avatar>
             </div>
@@ -32,7 +32,7 @@ const Introduction = () => {
             <div className="flex flex-col justify-center">
                 <Label className="font-virgil text-center md:text-start text-4xl pt-4">
                     <span className="italic">Hello,</span> I am{' '}
-                    <span className="text-green-500 hover:text-lime-400">
+                    <span className="text-green-500 hover:text-lime-300">
                         <TypeAnimation
                             sequence={sequence}
                             repeat={Infinity}
