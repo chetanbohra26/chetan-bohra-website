@@ -7,7 +7,7 @@ import { Separator } from '../ui/separator';
 
 const Content = () => {
 	return (
-		<div className="flex flex-col flex-grow scroll-smooth px-2 sm:px-4 py-2">
+		<div className="container flex flex-col flex-grow scroll-smooth px-2 sm:px-4 py-2">
 			<Introduction />
 
 			<Separator className="w-2/3 mx-auto my-8" />

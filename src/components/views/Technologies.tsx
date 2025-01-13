@@ -5,29 +5,33 @@ import nestImg from '@/assets/nestjs.svg';
 import nodeImg from '@/assets/nodejs.svg';
 import reactImg from '@/assets/react.svg';
 import awsImg from '@/assets/aws.svg';
-import tensorflowImg from '@/assets/tensorflow.svg';
 import esImg from '@/assets/elasticsearch.svg';
 import redisImg from '@/assets/redis.svg';
 import mysqlImg from '@/assets/mysql.svg';
 import pgImg from '@/assets/postgresql.svg';
 import mongoImg from '@/assets/mongo.svg';
 import socketIoImg from '@/assets/socket-io.svg';
-import goImg from '@/assets/go.svg';
+import stripeImg from '@/assets/stripe.svg';
+import paypalImg from '@/assets/paypal.svg';
+// import tensorflowImg from '@/assets/tensorflow.svg';
+// import goImg from '@/assets/go.svg';
 
 const Technologies = () => {
     const [icons] = useState([
         { img: nestImg, alt: 'NestJS' },
         { img: nodeImg, alt: 'Node.js' },
         { img: reactImg, alt: 'React.js' },
-        { img: goImg, alt: 'Go' },
         { img: awsImg, alt: 'AWS' },
+        { img: stripeImg, alt: 'Stripe' },
+        { img: paypalImg, alt: 'Paypal' },
         { img: esImg, alt: 'Elastic Search' },
         { img: redisImg, alt: 'Redis' },
         { img: mysqlImg, alt: 'MySQL' },
         { img: pgImg, alt: 'Postgres' },
         { img: mongoImg, alt: 'Mongo DB' },
         { img: socketIoImg, alt: 'Socket.io' },
-        { img: tensorflowImg, alt: 'Tensorflow' },
+        // { img: goImg, alt: 'Go' },
+        // { img: tensorflowImg, alt: 'Tensorflow' },
         /*{
             icon: (
                 <PlusCircleIcon className="h-20 w-20 p-2 fill-black hover:scale-125 transition ease-in-out duration-200" />
