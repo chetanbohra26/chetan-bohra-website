@@ -2,38 +2,91 @@ import { useState } from "react";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "../ui/card";
 import { Label } from "../ui/label";
 
-
 const Projects = () => {
     const [projects] = useState([
         {
             title: 'Marketing Planner',
             link: 'https://brandniti.drreddys.com',
-            role: 'Fullstack developer - React, NestJS, Docker, AWS',
-            description: 'An internal tool used by Dr. Reddy\'s to identify high-value doctors and plan marketing campaigns to boost sales'
+            role: 'Fullstack developer',
+            description: 'An internal tool for Dr. Reddy\'s brand managers to identify high-value doctors and plan marketing campaigns',
+            points: [
+                'Processed high-volume sales data (~10M/month) for insights',
+                'Identified high-value doctors for campaign tracking using various criteria',
+                'Developed campaign management and spend tracking across divisions',
+                'Built dashboards to measure the impact of marketing efforts',
+            ],
+            technologies: [
+                'NestJS',
+                'React',
+                'Docker',
+                'AWS',
+            ],
         },
         {
             title: 'OTT Platform (Confidential)',
             link: '/',
-            role: 'Backend developer - Node.js, AWS',
-            description: 'A well known content streaming platform used by millions of users across the globe'
+            role: 'Backend developer',
+            description: 'A popular Indian content streaming platform used by millions',
+            points: [
+                'Designed and maintained clean APIs for multiple frontend teams',
+                'Integrated APIs with multiple partners for content and analytics',
+                'Led POCs and R&D for new features and optimizations',
+                'Worked with user data to enhance personalization and engagement',
+            ],
+            technologies: [
+                'Node.js',
+                'AWS',
+                'Redis (Cache + DB)',
+                'OpenTelemetry',
+            ],
         },
         {
             title: 'ACadru',
             link: 'https://acadru.com',
-            role: 'Fullstack developer - React, NestJS, AWS, Elasticsearch',
-            description: 'An Ed-Tech platform that aims to prepare students for their career'
+            role: 'Fullstack developer',
+            description: 'An Ed-Tech platform helping students prepare for their careers',
+            points: [
+                'Designed and implemented core features across four codebases',
+                'Optimized query performance for MySQL + Elasticsearch',
+                'Debugged regression issues and provided scalable fixes',
+            ],
+            technologies: [
+                'NestJS',
+                'React',
+                'AWS',
+                'Elasticsearch'
+            ],
         },
         {
             title: 'BrokerBuk',
             link: 'https://play.google.com/store/apps/details?id=com.brokerbuk.app',
-            role: 'Backend developer - NestJS, Docker, AWS, Elasticsearch',
-            description: 'Mobile app for brokers and owners to share their properties with their network'
+            role: 'Backend developer',
+            description: 'A real estate app for brokers and owners to manage and share properties',
+            points: [
+                'Led technical solutioning, mentoring, and code reviews',
+                'Developed dynamic forms using Backend For Frontend (BFF) architecture',
+            ],
+            technologies: [
+                'NestJS',
+                'AWS',
+                'Elasticsearch',
+                'Docker',
+            ],
         },
         {
             title: 'Habitat Automations',
             link: 'https://habitatautomations.com',
-            role: 'Freelancer: CSS + React Optimizations',
-            description: 'A startup based around home automations and security'
+            role: 'Freelancer (CSS + React Optimizations)',
+            description: 'A startup based around home automations and security',
+            points: [
+                'Refactored and optimized the existing React codebase',
+                'Ensured responsiveness across all pages',
+                'Reduced page load times with performance improvements',
+            ],
+            technologies: [
+                'React',
+                'Bootstrap',
+            ],
         },
     ]);
 
@@ -43,11 +96,11 @@ const Projects = () => {
                 Cool stuff I worked on
             </Label>
 
-            <div className="flex grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mx-auto">
+            <div className="flex grid grid-cols-1 gap-4 mx-auto">
                 {
                     projects.map((proj, index) => (
-                        <Card className='w-100 md:w-[300px] flex flex-col' key={index}>
-                            <CardHeader>
+                        <Card className='w-100 flex flex-col' key={index}>
+                            <CardHeader className="pb-2">
                                 <CardTitle className={`flex text-green-500 ${proj.link && 'hover:text-lime-300'}`}>
                                     <a
                                         href={proj?.link}
@@ -63,7 +116,28 @@ const Projects = () => {
                                 </CardDescription>
                             </CardHeader>
                             <CardContent>
-                                {proj.role}
+                                {proj.points?.length > 0 && <ol className="ml-6 list-decimal mb-2">
+                                    {
+                                        proj.points?.map((point, index) => (
+                                            <div key={index}>
+                                                <li>{point}</li>
+                                            </div>
+                                        ))
+                                    }
+                                </ol>
+                                }
+
+                                {proj.role &&
+                                    <div className="mb-2">
+                                        <b>Role:</b> {proj.role}
+                                    </div>
+                                }
+
+                                {proj.technologies?.length > 0 &&
+                                    <div>
+                                        <b>Technologies Used:</b> {proj.technologies?.join(', ')}
+                                    </div>
+                                }
                             </CardContent>
                         </Card>
                     ))
