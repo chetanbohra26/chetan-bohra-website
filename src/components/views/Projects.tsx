@@ -5,6 +5,24 @@ import { Label } from "../ui/label";
 const Projects = () => {
     const [projects] = useState([
         {
+            title: 'GrayPorter',
+            link: 'https://grayporter.com',
+            role: 'Project Lead',
+            description: 'An e-commerce platform designed for purchasing affordable electronics globally.',
+            points: [
+                'Led the design and architecture of the entire system, including feature solutions.',
+                'Integrated multiple payment options, such as Stripe, PayPal, Affirm, and Klarna',
+                'Delivered the project end-to-end, including deployment to production',
+            ],
+            technologies: [
+                'NestJS',
+                'Postgres',
+                'Redis',
+                'AWS',
+                'Payment Integration'
+            ],
+        },
+        {
             title: 'Marketing Planner',
             link: 'https://brandniti.drreddys.com',
             role: 'Fullstack developer',
@@ -17,6 +35,8 @@ const Projects = () => {
             ],
             technologies: [
                 'NestJS',
+                'Postgres',
+                'Redis',
                 'React',
                 'Docker',
                 'AWS',
@@ -35,8 +55,8 @@ const Projects = () => {
             ],
             technologies: [
                 'Node.js',
-                'AWS',
                 'Redis (Cache + DB)',
+                'AWS',
                 'OpenTelemetry',
             ],
         },
@@ -52,6 +72,8 @@ const Projects = () => {
             ],
             technologies: [
                 'NestJS',
+                'MySQL',
+                'Redis',
                 'React',
                 'AWS',
                 'Elasticsearch'
@@ -68,6 +90,9 @@ const Projects = () => {
             ],
             technologies: [
                 'NestJS',
+                'Postgres',
+                'Redis',
+                'Google Maps',
                 'AWS',
                 'Elasticsearch',
                 'Docker',
@@ -93,7 +118,7 @@ const Projects = () => {
     return (
         <div className="flex flex-col mb-4 mx-auto">
             <Label className="text-center text-xl mb-4">
-                Cool stuff I worked on
+                Cool stuff I have worked on
             </Label>
 
             <div className="flex grid grid-cols-1 gap-4 mx-auto">
