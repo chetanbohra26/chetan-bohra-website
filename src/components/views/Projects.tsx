@@ -8,9 +8,9 @@ const Projects = () => {
             title: 'GrayPorter',
             link: 'https://grayporter.com',
             role: 'Project Lead',
-            description: 'An e-commerce platform designed for purchasing affordable electronics globally.',
+            description: 'An e-commerce platform designed for purchasing affordable electronics globally',
             points: [
-                'Led the design and architecture of the entire system, including feature solutions.',
+                'Led the design and architecture of the entire system, including feature solutions',
                 'Integrated multiple payment options, such as Stripe, PayPal, Affirm, and Klarna',
                 'Delivered the project end-to-end, including deployment to production',
             ],
