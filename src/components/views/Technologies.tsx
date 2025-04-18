@@ -13,8 +13,6 @@ import mongoImg from '@/assets/mongo.svg';
 import socketIoImg from '@/assets/socket-io.svg';
 import stripeImg from '@/assets/stripe.svg';
 import paypalImg from '@/assets/paypal.svg';
-// import tensorflowImg from '@/assets/tensorflow.svg';
-// import goImg from '@/assets/go.svg';
 
 const Technologies = () => {
     const [icons] = useState([
@@ -30,14 +28,6 @@ const Technologies = () => {
         { img: pgImg, alt: 'Postgres' },
         { img: mongoImg, alt: 'Mongo DB' },
         { img: socketIoImg, alt: 'Socket.io' },
-        // { img: goImg, alt: 'Go' },
-        // { img: tensorflowImg, alt: 'Tensorflow' },
-        /*{
-            icon: (
-                <PlusCircleIcon className="h-20 w-20 p-2 fill-black hover:scale-125 transition ease-in-out duration-200" />
-            ),
-            alt: 'More to come',
-        },*/
     ]);
 
     return (
@@ -50,7 +40,7 @@ const Technologies = () => {
                 {icons.map((icon, index) => (
                     <div className="flex flex-col gap-2" key={index}>
                         <div className="rounded-full bg-white flex-grow mx-auto">
-                            {/*icon?.icon ||*/ (
+                            {(
                                 <img
                                     className="h-20 w-20 p-4 hover:scale-125 transition ease-in-out duration-200"
                                     src={icon.img}

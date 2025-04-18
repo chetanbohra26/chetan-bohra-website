@@ -4,7 +4,6 @@ import { ArrowRight } from "lucide-react";
 
 import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
 import { Label } from "../ui/label";
-// import profileImg from '@/assets/photo_me.webp';
 import profileImg from '@/assets/photo.webp';
 
 const Introduction = () => {
