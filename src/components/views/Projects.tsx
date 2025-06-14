@@ -10,16 +10,16 @@ const Projects = () => {
             role: 'Project Lead',
             description: 'An e-commerce platform designed for purchasing affordable electronics globally',
             points: [
-                'Led the design and architecture of the entire system, including feature solutions',
+                'Led the development of the entire system from the ground up',
+                'Coordinated with the frontend and design teams to deliver a smooth user experience',
                 'Integrated multiple payment options, such as Stripe, PayPal, Affirm, and Klarna',
-                'Delivered the project end-to-end, including deployment to production',
             ],
             technologies: [
                 'NestJS',
                 'Postgres',
                 'Redis',
                 'AWS',
-                'Payment Integration'
+                'Payment Integration',
             ],
         },
         {
@@ -76,7 +76,7 @@ const Projects = () => {
                 'Redis',
                 'React',
                 'AWS',
-                'Elasticsearch'
+                'Elasticsearch',
             ],
         },
         {
