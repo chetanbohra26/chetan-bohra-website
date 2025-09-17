@@ -16,7 +16,7 @@ const Introduction = () => {
         2000,
         'a frontend developer',
         2000,
-        'a talent you need',
+        'the talent you need',
         2000,
     ]);
 
