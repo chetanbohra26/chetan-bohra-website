@@ -17,15 +17,16 @@ const slugs = [
 	'Redis',
 	'Elasticsearch',
 	'Socket.IO',
-	'Android',
 	'HTML',
 	'CSS',
 	'JavaScript',
+	'Kubernetes',
 	'NGINX',
 	'Docker',
 	'Git',
 	'Stripe',
 	'PayPal',
+	'Android',
 ];
 
 const Technologies = () => {
@@ -58,6 +59,7 @@ const Technologies = () => {
 							<Icons.github key='github' />,
 							<Icons.html key='html' />,
 							<Icons.js key='js' />,
+							<Icons.kubernetes key='kubernetes' />,
 							<Icons.mongo key='mongo' />,
 							<Icons.mysql key='mysql' />,
 							<Icons.nestjs key='nestjs' />,
