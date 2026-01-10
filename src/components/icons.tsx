@@ -96,7 +96,6 @@ export const Icons = {
 	),
 	go: (props: IconsProps) => (
 		<svg
-			role='img'
 			viewBox='0 0 24 24'
 			xmlns='http://www.w3.org/2000/svg'
 			fill='#fff'
@@ -130,7 +129,6 @@ export const Icons = {
 	),
 	kubernetes: (props: IconsProps) => (
 		<svg
-			role='img'
 			viewBox='0 0 24 24'
 			xmlns='http://www.w3.org/2000/svg'
 			fill='#fff'
@@ -264,7 +262,6 @@ export const Icons = {
 	),
 	paypal: (props: IconsProps) => (
 		<svg
-			role='img'
 			viewBox='0 0 24 24'
 			xmlns='http://www.w3.org/2000/svg'
 			fill='#fff'
@@ -322,7 +319,6 @@ export const Icons = {
 	),
 	stripe: (props: IconsProps) => (
 		<svg
-			role='img'
 			viewBox='0 0 24 24'
 			xmlns='http://www.w3.org/2000/svg'
 			fill='#fff'

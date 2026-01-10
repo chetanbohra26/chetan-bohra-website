@@ -1,32 +1,31 @@
 import { Label } from '@radix-ui/react-label';
 import { IconCloud } from '../ui/icon-cloud';
 import { Badge } from '../ui/badge';
-
 import { Icons } from '../icons';
 
-const slugs = [
-	'AWS',
-	'NestJS',
-	'NodeJS',
-	'Typescript',
-	'PostgreSQL',
-	'MySQL',
-	'MongoDB',
-	'ExpressJS',
-	'React',
-	'Redis',
-	'Elasticsearch',
-	'Socket.IO',
-	'HTML',
-	'CSS',
-	'JavaScript',
-	'Kubernetes',
-	'NGINX',
-	'Docker',
-	'Git',
-	'Stripe',
-	'PayPal',
-	'Android',
+const technologies = [
+	{ label: 'AWS', icon: Icons.aws },
+	{ label: 'NestJS', icon: Icons.nestjs },
+	{ label: 'NodeJS', icon: Icons.nodejs },
+	{ label: 'Typescript', icon: Icons.ts },
+	{ label: 'PostgreSQL', icon: Icons.postgres },
+	{ label: 'MySQL', icon: Icons.mysql },
+	{ label: 'MongoDB', icon: Icons.mongo },
+	{ label: 'ExpressJS', icon: Icons.express },
+	{ label: 'React', icon: Icons.react },
+	{ label: 'Redis', icon: Icons.redis },
+	{ label: 'Elasticsearch', icon: Icons.elasticsearch },
+	{ label: 'Socket.IO', icon: Icons.socketio },
+	{ label: 'HTML', icon: Icons.html },
+	{ label: 'CSS', icon: Icons.css },
+	{ label: 'JavaScript', icon: Icons.js },
+	{ label: 'Kubernetes', icon: Icons.kubernetes },
+	{ label: 'NGINX', icon: Icons.nginx },
+	{ label: 'Docker', icon: Icons.docker },
+	{ label: 'Git', icon: Icons.github },
+	{ label: 'Stripe', icon: Icons.stripe },
+	{ label: 'PayPal', icon: Icons.paypal },
+	{ label: 'Android', icon: Icons.android },
 ];
 
 const Technologies = () => {
@@ -38,9 +37,9 @@ const Technologies = () => {
 
 			<div className='flex pb-4 mx-auto'>
 				<div className='flex flex-wrap justify-center gap-2'>
-					{slugs.map((slug) => (
-						<Badge key={slug} variant='secondary'>
-							{slug}
+					{technologies.map(({ label }) => (
+						<Badge key={label} variant='secondary'>
+							{label}
 						</Badge>
 					))}
 				</div>
@@ -49,31 +48,9 @@ const Technologies = () => {
 			<div className='flex w-100 justify-center'>
 				<div className='w-full aspect-square max-w-[280px] sm:max-w-[360px] md:max-w-[480px] lg:max-w-[600px]'>
 					<IconCloud
-						icons={[
-							<Icons.android key='android' />,
-							<Icons.aws key='aws' />,
-							<Icons.css key='css' />,
-							<Icons.docker key='docker' />,
-							<Icons.elasticsearch key='elasticsearch' />,
-							<Icons.express key='express' />,
-							<Icons.github key='github' />,
-							<Icons.go key='go' />,
-							<Icons.html key='html' />,
-							<Icons.js key='js' />,
-							<Icons.kubernetes key='kubernetes' />,
-							<Icons.mongo key='mongo' />,
-							<Icons.mysql key='mysql' />,
-							<Icons.nestjs key='nestjs' />,
-							<Icons.nginx key='nginx' />,
-							<Icons.nodejs key='nodejs' />,
-							<Icons.paypal key='paypal' />,
-							<Icons.postgres key='postgres' />,
-							<Icons.react key='react' />,
-							<Icons.redis key='redis' />,
-							<Icons.socketio key='socketio' />,
-							<Icons.stripe key='stripe' />,
-							<Icons.ts key='ts' />,
-						]}
+						icons={technologies.map(({ label, icon: Icon }) => (
+							<Icon key={label} aria-hidden='true' />
+						))}
 					/>
 				</div>
 			</div>
