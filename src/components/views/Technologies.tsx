@@ -15,17 +15,19 @@ const technologies = [
 	{ label: 'React', icon: Icons.react },
 	{ label: 'Redis', icon: Icons.redis },
 	{ label: 'Elasticsearch', icon: Icons.elasticsearch },
-	{ label: 'Socket.IO', icon: Icons.socketio },
-	{ label: 'HTML', icon: Icons.html },
-	{ label: 'CSS', icon: Icons.css },
-	{ label: 'JavaScript', icon: Icons.js },
 	{ label: 'Kubernetes', icon: Icons.kubernetes },
 	{ label: 'NGINX', icon: Icons.nginx },
 	{ label: 'Docker', icon: Icons.docker },
 	{ label: 'Git', icon: Icons.github },
+	{ label: 'Socket.IO', icon: Icons.socketio },
+	{ label: 'HTML', icon: Icons.html },
+	{ label: 'CSS', icon: Icons.css },
+	{ label: 'JavaScript', icon: Icons.js },
+	{ label: 'Bootstrap', icon: Icons.bootstrap },
 	{ label: 'Stripe', icon: Icons.stripe },
 	{ label: 'PayPal', icon: Icons.paypal },
 	{ label: 'Android', icon: Icons.android },
+	{ label: 'Go', icon: Icons.go },
 ];
 
 const Technologies = () => {
