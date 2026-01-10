@@ -24,6 +24,7 @@ const technologies = [
 	{ label: 'CSS', icon: Icons.css },
 	{ label: 'JavaScript', icon: Icons.js },
 	{ label: 'Bootstrap', icon: Icons.bootstrap },
+	{ label: 'TailwindCSS', icon: Icons.tailwind },
 	{ label: 'Stripe', icon: Icons.stripe },
 	{ label: 'PayPal', icon: Icons.paypal },
 	{ label: 'Android', icon: Icons.android },
