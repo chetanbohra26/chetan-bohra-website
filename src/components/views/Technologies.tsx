@@ -57,6 +57,7 @@ const Technologies = () => {
 							<Icons.elasticsearch key='elasticsearch' />,
 							<Icons.express key='express' />,
 							<Icons.github key='github' />,
+							<Icons.go key='go' />,
 							<Icons.html key='html' />,
 							<Icons.js key='js' />,
 							<Icons.kubernetes key='kubernetes' />,
