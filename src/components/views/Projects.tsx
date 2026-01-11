@@ -155,9 +155,7 @@ const Projects = () => {
 							{proj.points?.length > 0 && (
 								<ol className='ml-6 list-decimal mb-2'>
 									{proj.points?.map((point, index) => (
-										<div key={index}>
-											<li>{point}</li>
-										</div>
+										<li key={index}>{point}</li>
 									))}
 								</ol>
 							)}
