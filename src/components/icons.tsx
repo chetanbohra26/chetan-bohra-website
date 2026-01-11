@@ -234,11 +234,11 @@ export const Icons = {
 					gradientTransform='translate(0 24.664) scale(1.51263)'
 					gradientUnits='userSpaceOnUse'
 				>
-					<stop stop-color='#fff' />
-					<stop offset='.33' stop-color='#fff' />
-					<stop offset='.637' stop-color='#fff' />
-					<stop offset='.934' stop-color='#fff' />
-					<stop offset='1' stop-color='#fff' />
+					<stop stopColor='#fff' />
+					<stop offset='.33' stopColor='#fff' />
+					<stop offset='.637' stopColor='#fff' />
+					<stop offset='.934' stopColor='#fff' />
+					<stop offset='1' stopColor='#fff' />
 				</linearGradient>
 				<linearGradient
 					id='b'
@@ -249,10 +249,10 @@ export const Icons = {
 					gradientTransform='translate(0 24.664) scale(1.51263)'
 					gradientUnits='userSpaceOnUse'
 				>
-					<stop offset='.138' stop-color='#fff' />
-					<stop offset='.402' stop-color='#fff' />
-					<stop offset='.713' stop-color='#fff' />
-					<stop offset='.908' stop-color='#fff' />
+					<stop offset='.138' stopColor='#fff' />
+					<stop offset='.402' stopColor='#fff' />
+					<stop offset='.713' stopColor='#fff' />
+					<stop offset='.908' stopColor='#fff' />
 				</linearGradient>
 				<linearGradient
 					id='c'
@@ -263,10 +263,10 @@ export const Icons = {
 					gradientTransform='translate(0 24.664) scale(1.51263)'
 					gradientUnits='userSpaceOnUse'
 				>
-					<stop offset='.092' stop-color='#fff' />
-					<stop offset='.287' stop-color='#fff' />
-					<stop offset='.598' stop-color='#fff' />
-					<stop offset='.862' stop-color='#fff' />
+					<stop offset='.092' stopColor='#fff' />
+					<stop offset='.287' stopColor='#fff' />
+					<stop offset='.598' stopColor='#fff' />
+					<stop offset='.862' stopColor='#fff' />
 				</linearGradient>
 			</defs>
 		</svg>

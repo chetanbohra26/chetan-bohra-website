@@ -1,5 +1,5 @@
-import React, { useEffect, useRef, useState } from "react";
-import { renderToString } from "react-dom/server";
+import React, { useEffect, useRef, useState } from 'react';
+import { renderToString } from 'react-dom/server';
 
 interface Icon {
 	x: number;
@@ -96,7 +96,7 @@ export function IconCloud({ icons, images }: IconCloudProps) {
 			canvas.width = rect.width * dpr;
 			canvas.height = rect.height * dpr;
 
-			const ctx = canvas.getContext("2d");
+			const ctx = canvas.getContext('2d');
 			if (ctx) {
 				ctx.setTransform(1, 0, 0, 1, 0, 0);
 				ctx.scale(dpr, dpr);
@@ -106,8 +106,8 @@ export function IconCloud({ icons, images }: IconCloudProps) {
 		};
 
 		resize();
-		window.addEventListener("resize", resize);
-		return () => window.removeEventListener("resize", resize);
+		window.addEventListener('resize', resize);
+		return () => window.removeEventListener('resize', resize);
 	}, []);
 
 	// Create icon canvases once when icons/images change
@@ -121,17 +121,17 @@ export function IconCloud({ icons, images }: IconCloudProps) {
 		const OFFSCREEN_SIZE = Math.ceil(MAX_ICON_SIZE * MAX_SCALE * dpr);
 
 		const newIconCanvases = items.map((item, index) => {
-			const offscreen = document.createElement("canvas");
+			const offscreen = document.createElement('canvas');
 			offscreen.width = OFFSCREEN_SIZE;
 			offscreen.height = OFFSCREEN_SIZE;
 			const padding = offscreen.width * 0.08;
-			const offCtx = offscreen.getContext("2d");
+			const offCtx = offscreen.getContext('2d');
 
 			if (offCtx) {
 				if (images) {
 					// Handle image URLs directly
 					const img = new Image();
-					img.crossOrigin = "anonymous";
+					img.crossOrigin = 'anonymous';
 					img.src = items[index] as string;
 					img.onload = () => {
 						offCtx.setTransform(1, 0, 0, 1, 0, 0);
@@ -167,7 +167,7 @@ export function IconCloud({ icons, images }: IconCloudProps) {
 						item as React.ReactElement
 					);
 					const img = new Image();
-					img.src = "data:image/svg+xml;base64," + btoa(svgString);
+					img.src = 'data:image/svg+xml;base64,' + btoa(svgString);
 					img.onload = () => {
 						offCtx.clearRect(
 							0,
@@ -231,7 +231,7 @@ export function IconCloud({ icons, images }: IconCloudProps) {
 		const x = e.clientX - rect.left;
 		const y = e.clientY - rect.top;
 
-		const ctx = canvasRef.current.getContext("2d");
+		const ctx = canvasRef.current.getContext('2d');
 		if (!ctx) return;
 
 		const { x: rx, y: ry } = rotationRef.current;
@@ -321,7 +321,7 @@ export function IconCloud({ icons, images }: IconCloudProps) {
 	// Animation and rendering
 	useEffect(() => {
 		const canvas = canvasRef.current;
-		const ctx = canvas?.getContext("2d");
+		const ctx = canvas?.getContext('2d');
 		if (!canvas || !ctx) return;
 
 		const animate = () => {
@@ -426,12 +426,12 @@ export function IconCloud({ icons, images }: IconCloudProps) {
 					// Show numbered circles if no icons/images are provided
 					ctx.beginPath();
 					ctx.arc(0, 0, 20, 0, Math.PI * 2);
-					ctx.fillStyle = "#4444ff";
+					ctx.fillStyle = '#4444ff';
 					ctx.fill();
-					ctx.fillStyle = "white";
-					ctx.textAlign = "center";
-					ctx.textBaseline = "middle";
-					ctx.font = "16px Arial";
+					ctx.fillStyle = 'white';
+					ctx.textAlign = 'center';
+					ctx.textBaseline = 'middle';
+					ctx.font = '16px Arial';
 					ctx.fillText(`${icon.id + 1}`, 0, 0);
 				}
 
@@ -456,9 +456,9 @@ export function IconCloud({ icons, images }: IconCloudProps) {
 			onMouseMove={handleMouseMove}
 			onMouseUp={handleMouseUp}
 			onMouseLeave={handleMouseUp}
-			className="rounded-lg w-full h-full"
-			aria-label="3D Icon Cloud"
-			role="img"
+			className='rounded-lg w-full h-full'
+			aria-label='3D Icon Cloud'
+			role='img'
 		/>
 	);
 }
