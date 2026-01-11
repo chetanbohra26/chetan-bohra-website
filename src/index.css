@@ -5,7 +5,8 @@
 @layer base {
 	@font-face {
 		font-family: 'Virgil';
-		src: local('Pacifico Regular'), local('Pacifico-Regular'), local('Virgil'), url(./assets/Virgil.woff2) format('woff2');
+		src: local('Virgil'), url(./assets/Virgil.woff2) format('woff2');
+		font-display: swap;
 	}
 
 	:root {
