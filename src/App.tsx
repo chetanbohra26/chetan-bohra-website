@@ -5,10 +5,10 @@ import Navbar from './components/views/Navbar';
 
 function App() {
 	return (
-		<ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
-			<div className="text-white flex flex-col h-screen">
+		<ThemeProvider defaultTheme='dark' storageKey='vite-ui-theme'>
+			<div className='text-white flex flex-col h-screen'>
 				<Navbar />
-				<div className="bg-zinc-950 px-0 flex flex-col flex-grow scroll-smooth">
+				<div className='bg-zinc-950 px-0 flex flex-col flex-grow scroll-smooth'>
 					<Content />
 				</div>
 				<Analytics />
