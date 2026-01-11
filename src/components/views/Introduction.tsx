@@ -28,6 +28,7 @@ const Introduction = () => {
 						src={profileImg}
 						alt='Chetan'
 						fetchPriority='high'
+						loading='eager'
 					/>
 					<AvatarFallback>Chetan</AvatarFallback>
 				</Avatar>
