@@ -17,6 +17,7 @@ const Content = () => {
 				<a
 					href='https://squareboat.com'
 					target='_blank'
+					rel='noreferrer'
 					className='text-green-500 hover:text-lime-300 underline'
 					aria-label='Squareboat'
 				>

@@ -1,4 +1,4 @@
-import { Label } from '@radix-ui/react-label';
+import { Label } from '../ui/label';
 import { IconCloud } from '../ui/icon-cloud';
 import { Badge } from '../ui/badge';
 import { Icons } from '../icons';

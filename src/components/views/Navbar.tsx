@@ -83,8 +83,6 @@ const Navbar = () => {
 								<TooltipTrigger asChild>
 									<a
 										href='mailto:chetanbohra26@gmail.com'
-										target='_blank'
-										rel='noreferrer'
 										aria-label='Mail'
 									>
 										<Avatar className='h-8 w-8 p-1.5 mr-4 hover:scale-125 transition ease-in-out'>
