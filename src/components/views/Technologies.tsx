@@ -1,9 +1,10 @@
+import { memo, useMemo } from 'react';
 import { Label } from '../ui/label';
 import { IconCloud } from '../ui/icon-cloud';
 import { Badge } from '../ui/badge';
 import { Icons } from '../icons';
 
-const technologies = [
+const TECHNOLOGIES_DATA = [
 	{ label: 'AWS', icon: Icons.aws },
 	{ label: 'NestJS', icon: Icons.nestjs },
 	{ label: 'NodeJS', icon: Icons.nodejs },
@@ -31,7 +32,17 @@ const technologies = [
 	{ label: 'Go', icon: Icons.go },
 ];
 
-const Technologies = () => {
+const Technologies = memo(() => {
+	const technologies = useMemo(() => TECHNOLOGIES_DATA, []);
+
+	const iconElements = useMemo(
+		() =>
+			technologies.map(({ label, icon: Icon }) => (
+				<Icon key={label} aria-hidden='true' />
+			)),
+		[technologies]
+	);
+
 	return (
 		<div className='flex flex-col mb-8 mx-auto'>
 			<Label className='text-center text-xl pb-4'>
@@ -50,15 +61,13 @@ const Technologies = () => {
 
 			<div className='flex w-100 justify-center'>
 				<div className='w-full aspect-square max-w-[280px] sm:max-w-[360px] md:max-w-[480px] lg:max-w-[600px]'>
-					<IconCloud
-						icons={technologies.map(({ label, icon: Icon }) => (
-							<Icon key={label} aria-hidden='true' />
-						))}
-					/>
+					<IconCloud icons={iconElements} />
 				</div>
 			</div>
 		</div>
 	);
-};
+});
+
+Technologies.displayName = 'Technologies';
 
 export default Technologies;

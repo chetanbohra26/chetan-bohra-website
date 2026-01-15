@@ -1,3 +1,4 @@
+import { memo, useMemo } from 'react';
 import {
 	Card,
 	CardContent,
@@ -7,7 +8,7 @@ import {
 } from '../ui/card';
 import { Label } from '../ui/label';
 
-const PROJECTS = [
+const PROJECTS_DATA = [
 	{
 		title: 'GrayPorter',
 		link: 'https://grayporter.com',
@@ -109,7 +110,9 @@ const PROJECTS = [
 	},
 ];
 
-const Projects = () => {
+const Projects = memo(() => {
+	const projects = useMemo(() => PROJECTS_DATA, []);
+
 	return (
 		<div className='flex flex-col mb-4 mx-auto'>
 			<Label className='text-center text-xl mb-4'>
@@ -117,7 +120,7 @@ const Projects = () => {
 			</Label>
 
 			<div className='flex grid grid-cols-1 gap-4 mx-auto'>
-				{PROJECTS.map((proj) => (
+				{projects.map((proj) => (
 					<Card className='w-100 flex flex-col' key={proj.title}>
 						<CardHeader className='pb-2'>
 							<CardTitle
@@ -169,6 +172,8 @@ const Projects = () => {
 			</div>
 		</div>
 	);
-};
+});
+
+Projects.displayName = 'Projects';
 
 export default Projects;

@@ -1,9 +1,12 @@
+import { lazy, Suspense } from 'react';
 import Introduction from './Introduction';
 import Projects from './Projects';
-import Technologies from './Technologies';
-import ScheduleMeet from './ScheduleMeet';
 import { Label } from '../ui/label';
 import { Separator } from '../ui/separator';
+
+// Lazy load below-the-fold components
+const Technologies = lazy(() => import('./Technologies'));
+const ScheduleMeet = lazy(() => import('./ScheduleMeet'));
 
 const Content = () => {
 	return (
@@ -31,11 +34,15 @@ const Content = () => {
 
 			<Separator className='w-2/3 mx-auto my-8' />
 
-			<Technologies />
+			<Suspense fallback={<div className='min-h-[400px]' />}>
+				<Technologies />
+			</Suspense>
 
 			<Separator className='w-2/3 mx-auto mt-8' />
 
-			<ScheduleMeet />
+			<Suspense fallback={<div className='min-h-[1000px]' />}>
+				<ScheduleMeet />
+			</Suspense>
 		</main>
 	);
 };

@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef, useState, useMemo, useCallback } from 'react';
 import { renderToString } from 'react-dom/server';
 
 interface Icon {
@@ -85,10 +85,37 @@ export function IconCloud({ icons, images }: IconCloudProps) {
 	const iconCanvasesRef = useRef<HTMLCanvasElement[]>([]);
 	const imagesLoadedRef = useRef<boolean[]>([]);
 
+	// Debounce resize handler for better performance
+	const debouncedResize = useMemo(() => {
+		let timeoutId: ReturnType<typeof setTimeout>;
+		return () => {
+			clearTimeout(timeoutId);
+			timeoutId = setTimeout(() => {
+				const canvas = canvasRef.current;
+				if (!canvas) return;
+
+				const rect = canvas.getBoundingClientRect();
+				const dpr = window.devicePixelRatio || 1;
+
+				canvas.width = rect.width * dpr;
+				canvas.height = rect.height * dpr;
+
+				const ctx = canvas.getContext('2d');
+				if (ctx) {
+					ctx.setTransform(1, 0, 0, 1, 0, 0);
+					ctx.scale(dpr, dpr);
+				}
+
+				paramsRef.current = getParamsForSize(rect.width);
+			}, 150);
+		};
+	}, []);
+
 	useEffect(() => {
 		const canvas = canvasRef.current;
 		if (!canvas) return;
 
+		// Initial resize
 		const resize = () => {
 			const rect = canvas.getBoundingClientRect();
 			const dpr = window.devicePixelRatio || 1;
@@ -106,9 +133,11 @@ export function IconCloud({ icons, images }: IconCloudProps) {
 		};
 
 		resize();
-		window.addEventListener('resize', resize);
-		return () => window.removeEventListener('resize', resize);
-	}, []);
+		window.addEventListener('resize', debouncedResize);
+		return () => {
+			window.removeEventListener('resize', debouncedResize);
+		};
+	}, [debouncedResize]);
 
 	// Create icon canvases once when icons/images change
 	useEffect(() => {
@@ -223,8 +252,8 @@ export function IconCloud({ icons, images }: IconCloudProps) {
 		setIconPositions(newIcons);
 	}, [icons, images]);
 
-	// Handle mouse events
-	const handleMouseDown = (e: React.MouseEvent<HTMLCanvasElement>) => {
+	// Handle mouse events - memoized for performance
+	const handleMouseDown = useCallback((e: React.MouseEvent<HTMLCanvasElement>) => {
 		const rect = canvasRef.current?.getBoundingClientRect();
 		if (!rect || !canvasRef.current) return;
 
@@ -291,9 +320,9 @@ export function IconCloud({ icons, images }: IconCloudProps) {
 
 		setIsDragging(true);
 		setLastMousePos({ x: e.clientX, y: e.clientY });
-	};
+	}, [iconPositions]);
 
-	const handleMouseMove = (e: React.MouseEvent<HTMLCanvasElement>) => {
+	const handleMouseMove = useCallback((e: React.MouseEvent<HTMLCanvasElement>) => {
 		const rect = canvasRef.current?.getBoundingClientRect();
 		if (rect) {
 			const x = e.clientX - rect.left;
@@ -312,11 +341,11 @@ export function IconCloud({ icons, images }: IconCloudProps) {
 
 			setLastMousePos({ x: e.clientX, y: e.clientY });
 		}
-	};
+	}, [isDragging, lastMousePos]);
 
-	const handleMouseUp = () => {
+	const handleMouseUp = useCallback(() => {
 		setIsDragging(false);
-	};
+	}, []);
 
 	// Animation and rendering
 	useEffect(() => {

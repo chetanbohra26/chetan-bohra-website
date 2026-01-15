@@ -1,3 +1,4 @@
+import { memo } from 'react';
 import { LightbulbIcon } from 'lucide-react';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import {
@@ -10,7 +11,7 @@ import linkedinIconImg from '@/assets/linkedin-in.svg';
 import githubIconImg from '@/assets/github.svg';
 import mailIconImg from '@/assets/envelope-regular.svg';
 
-const Navbar = () => {
+const Navbar = memo(() => {
 	return (
 		<nav className='bg-black border-b border-gray-900'>
 			<div className='mx-auto max-w-7xl px-2'>
@@ -106,6 +107,8 @@ const Navbar = () => {
 			</div>
 		</nav>
 	);
-};
+});
+
+Navbar.displayName = 'Navbar';
 
 export default Navbar;

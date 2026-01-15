@@ -1,4 +1,4 @@
-import { createContext, useContext, useEffect, useState } from 'react';
+import { createContext, useContext, useEffect, useState, useMemo, useCallback } from 'react';
 
 type Theme = 'dark' | 'light' | 'system';
 
@@ -49,13 +49,15 @@ export function ThemeProvider({
 		root.classList.add(theme);
 	}, [theme]);
 
-	const value = {
+	const setThemeValue = useCallback((newTheme: Theme) => {
+		localStorage.setItem(storageKey, newTheme);
+		setTheme(newTheme);
+	}, [storageKey]);
+
+	const value = useMemo(() => ({
 		theme,
-		setTheme: (theme: Theme) => {
-			localStorage.setItem(storageKey, theme);
-			setTheme(theme);
-		},
-	};
+		setTheme: setThemeValue,
+	}), [theme, setThemeValue]);
 
 	return (
 		<ThemeProviderContext.Provider {...props} value={value}>
