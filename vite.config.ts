@@ -24,7 +24,11 @@ export default defineConfig({
 						'@radix-ui/react-slot',
 						'@radix-ui/react-tooltip',
 					],
-					utils: ['clsx', 'tailwind-merge', 'class-variance-authority'],
+					utils: [
+						'clsx',
+						'tailwind-merge',
+						'class-variance-authority',
+					],
 					icons: ['lucide-react'],
 					calendly: ['react-calendly'],
 					analytics: ['@vercel/analytics'],
