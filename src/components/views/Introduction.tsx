@@ -27,11 +27,11 @@ const Introduction = memo(() => {
 				<Avatar className='w-[200px] h-[200px] xxs:w-[250px] xxs:h-[250px] sm:w-[300px] sm:h-[300px] mx-auto'>
 					<AvatarImage
 						src={profileImg}
-						alt='Chetan'
+						alt='Chetan Bohra - Senior Software Engineer'
 						fetchPriority='high'
 						loading='eager'
 					/>
-					<AvatarFallback>Chetan</AvatarFallback>
+					<AvatarFallback>Chetan Bohra</AvatarFallback>
 				</Avatar>
 			</div>
 
