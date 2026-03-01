@@ -1,4 +1,4 @@
-import { memo, useMemo } from 'react';
+import { memo } from 'react';
 import {
 	Card,
 	CardContent,
@@ -111,8 +111,6 @@ const PROJECTS_DATA = [
 ];
 
 const Projects = memo(() => {
-	const projects = useMemo(() => PROJECTS_DATA, []);
-
 	return (
 		<div className='flex flex-col mb-4 mx-auto'>
 			<Label className='text-center text-xl mb-4'>
@@ -120,7 +118,7 @@ const Projects = memo(() => {
 			</Label>
 
 			<div className='flex grid grid-cols-1 gap-4 mx-auto'>
-				{projects.map((proj) => (
+				{PROJECTS_DATA.map((proj) => (
 					<Card className='w-100 flex flex-col' key={proj.title}>
 						<CardHeader className='pb-2'>
 							<CardTitle

@@ -1,4 +1,4 @@
-import { memo, useMemo } from 'react';
+import { memo } from 'react';
 import { TypeAnimation } from 'react-type-animation';
 import { ArrowRight } from 'lucide-react';
 
@@ -20,7 +20,6 @@ const TYPE_ANIMATION_SEQUENCE = [
 ];
 
 const Introduction = memo(() => {
-	const animationSequence = useMemo(() => TYPE_ANIMATION_SEQUENCE, []);
 	return (
 		<div className='flex grid grid-cols-1 md:grid-cols-2 my-2'>
 			<div className='border-dashed border-2 mx-auto p-1 rounded-full'>
@@ -40,7 +39,7 @@ const Introduction = memo(() => {
 					<span className='italic'>Hello,</span> I am{' '}
 					<span className='text-green-500 hover:text-lime-300'>
 						<TypeAnimation
-							sequence={animationSequence}
+							sequence={TYPE_ANIMATION_SEQUENCE}
 							repeat={Infinity}
 						/>
 					</span>
