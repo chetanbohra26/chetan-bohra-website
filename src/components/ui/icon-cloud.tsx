@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState, useMemo, useCallback } from 'react';
+import React, { useEffect, useRef, useMemo, useCallback } from 'react';
 import { renderToString } from 'react-dom/server';
 
 interface Icon {
@@ -21,6 +21,16 @@ type CloudParams = {
 	baseSpeed: number;
 	maxSpeed: number;
 	iconSize: number;
+};
+
+type TargetRotation = {
+	x: number;
+	y: number;
+	startX: number;
+	startY: number;
+	distance: number;
+	startTime: number;
+	duration: number;
 };
 
 function easeOutCubic(t: number): number {
@@ -67,77 +77,57 @@ const MAX_SCALE = 1.15;
 export function IconCloud({ icons, images }: IconCloudProps) {
 	const canvasRef = useRef<HTMLCanvasElement>(null);
 	const paramsRef = useRef<CloudParams | null>(null);
-	const [iconPositions, setIconPositions] = useState<Icon[]>([]);
-	const [isDragging, setIsDragging] = useState(false);
-	const [lastMousePos, setLastMousePos] = useState({ x: 0, y: 0 });
-	const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
-	const [targetRotation, setTargetRotation] = useState<{
-		x: number;
-		y: number;
-		startX: number;
-		startY: number;
-		distance: number;
-		startTime: number;
-		duration: number;
-	} | null>(null);
 	const animationFrameRef = useRef<number>(0);
 	const rotationRef = useRef({ x: 0, y: 0 });
 	const iconCanvasesRef = useRef<HTMLCanvasElement[]>([]);
 	const imagesLoadedRef = useRef<boolean[]>([]);
+
+	// Animation values as refs — avoids re-creating the RAF loop on every mouse move
+	const iconPositionsRef = useRef<Icon[]>([]);
+	const isDraggingRef = useRef(false);
+	const lastMousePosRef = useRef({ x: 0, y: 0 });
+	const mousePosRef = useRef({ x: 0, y: 0 });
+	const targetRotationRef = useRef<TargetRotation | null>(null);
+
+	// Cache canvas dimensions — updated on resize, avoids getBoundingClientRect every frame
+	const canvasSizeRef = useRef({ width: 0, height: 0 });
+
+	const updateCanvasSize = useCallback(() => {
+		const canvas = canvasRef.current;
+		if (!canvas) return;
+
+		const rect = canvas.getBoundingClientRect();
+		const dpr = window.devicePixelRatio || 1;
+
+		canvas.width = rect.width * dpr;
+		canvas.height = rect.height * dpr;
+
+		const ctx = canvas.getContext('2d');
+		if (ctx) {
+			ctx.setTransform(1, 0, 0, 1, 0, 0);
+			ctx.scale(dpr, dpr);
+		}
+
+		canvasSizeRef.current = { width: rect.width, height: rect.height };
+		paramsRef.current = getParamsForSize(rect.width);
+	}, []);
 
 	// Debounce resize handler for better performance
 	const debouncedResize = useMemo(() => {
 		let timeoutId: ReturnType<typeof setTimeout>;
 		return () => {
 			clearTimeout(timeoutId);
-			timeoutId = setTimeout(() => {
-				const canvas = canvasRef.current;
-				if (!canvas) return;
-
-				const rect = canvas.getBoundingClientRect();
-				const dpr = window.devicePixelRatio || 1;
-
-				canvas.width = rect.width * dpr;
-				canvas.height = rect.height * dpr;
-
-				const ctx = canvas.getContext('2d');
-				if (ctx) {
-					ctx.setTransform(1, 0, 0, 1, 0, 0);
-					ctx.scale(dpr, dpr);
-				}
-
-				paramsRef.current = getParamsForSize(rect.width);
-			}, 150);
+			timeoutId = setTimeout(updateCanvasSize, 150);
 		};
-	}, []);
+	}, [updateCanvasSize]);
 
 	useEffect(() => {
-		const canvas = canvasRef.current;
-		if (!canvas) return;
-
-		// Initial resize
-		const resize = () => {
-			const rect = canvas.getBoundingClientRect();
-			const dpr = window.devicePixelRatio || 1;
-
-			canvas.width = rect.width * dpr;
-			canvas.height = rect.height * dpr;
-
-			const ctx = canvas.getContext('2d');
-			if (ctx) {
-				ctx.setTransform(1, 0, 0, 1, 0, 0);
-				ctx.scale(dpr, dpr);
-			}
-
-			paramsRef.current = getParamsForSize(rect.width);
-		};
-
-		resize();
+		updateCanvasSize();
 		window.addEventListener('resize', debouncedResize);
 		return () => {
 			window.removeEventListener('resize', debouncedResize);
 		};
-	}, [debouncedResize]);
+	}, [updateCanvasSize, debouncedResize]);
 
 	// Create icon canvases once when icons/images change
 	useEffect(() => {
@@ -176,7 +166,6 @@ export function IconCloud({ icons, images }: IconCloudProps) {
 						offCtx.arc(radius, radius, radius, 0, Math.PI * 2);
 						offCtx.clip();
 
-						// Draw the image
 						offCtx.drawImage(
 							img,
 							padding,
@@ -221,13 +210,13 @@ export function IconCloud({ icons, images }: IconCloudProps) {
 		iconCanvasesRef.current = newIconCanvases;
 	}, [icons, images]);
 
-	// Generate initial icon positions on a sphere
+	// Generate initial icon positions on a sphere — stores into ref, no re-render needed
 	useEffect(() => {
 		const items = icons || images || [];
 		const newIcons: Icon[] = [];
 		const numIcons = items.length || 20;
 
-		// Fibonacci sphere parameters
+		// Fibonacci sphere distribution
 		const offset = 2 / numIcons;
 		const increment = Math.PI * (3 - Math.sqrt(5));
 
@@ -249,19 +238,16 @@ export function IconCloud({ icons, images }: IconCloudProps) {
 				id: i,
 			});
 		}
-		setIconPositions(newIcons);
+		iconPositionsRef.current = newIcons;
 	}, [icons, images]);
 
-	// Handle mouse events - memoized for performance
+	// Event handlers are now stable — all mutable values live in refs
 	const handleMouseDown = useCallback((e: React.MouseEvent<HTMLCanvasElement>) => {
 		const rect = canvasRef.current?.getBoundingClientRect();
 		if (!rect || !canvasRef.current) return;
 
 		const x = e.clientX - rect.left;
 		const y = e.clientY - rect.top;
-
-		const ctx = canvasRef.current.getContext('2d');
-		if (!ctx) return;
 
 		const { x: rx, y: ry } = rotationRef.current;
 		const cosX = Math.cos(rx);
@@ -273,7 +259,7 @@ export function IconCloud({ icons, images }: IconCloudProps) {
 		const centerY = rect.height / 2;
 		const { iconSize } = paramsRef.current!;
 
-		iconPositions.forEach((icon) => {
+		iconPositionsRef.current.forEach((icon) => {
 			const rotatedX = icon.x * cosY - icon.z * sinY;
 			const rotatedZ = icon.x * sinY + icon.z * cosY;
 			const rotatedY = icon.y * cosX + rotatedZ * sinX;
@@ -305,7 +291,7 @@ export function IconCloud({ icons, images }: IconCloudProps) {
 
 				const duration = Math.min(2000, Math.max(800, distance * 1000));
 
-				setTargetRotation({
+				targetRotationRef.current = {
 					x: targetX,
 					y: targetY,
 					startX: currentX,
@@ -313,41 +299,43 @@ export function IconCloud({ icons, images }: IconCloudProps) {
 					distance,
 					startTime: performance.now(),
 					duration,
-				});
+				};
 				return;
 			}
 		});
 
-		setIsDragging(true);
-		setLastMousePos({ x: e.clientX, y: e.clientY });
-	}, [iconPositions]);
+		isDraggingRef.current = true;
+		lastMousePosRef.current = { x: e.clientX, y: e.clientY };
+	}, []);
 
 	const handleMouseMove = useCallback((e: React.MouseEvent<HTMLCanvasElement>) => {
 		const rect = canvasRef.current?.getBoundingClientRect();
 		if (rect) {
-			const x = e.clientX - rect.left;
-			const y = e.clientY - rect.top;
-			setMousePos({ x, y });
+			mousePosRef.current = {
+				x: e.clientX - rect.left,
+				y: e.clientY - rect.top,
+			};
 		}
 
-		if (isDragging) {
-			const deltaX = e.clientX - lastMousePos.x;
-			const deltaY = e.clientY - lastMousePos.y;
+		if (isDraggingRef.current) {
+			const deltaX = e.clientX - lastMousePosRef.current.x;
+			const deltaY = e.clientY - lastMousePosRef.current.y;
 
 			rotationRef.current = {
 				x: rotationRef.current.x + deltaY * 0.002,
 				y: rotationRef.current.y + deltaX * 0.002,
 			};
 
-			setLastMousePos({ x: e.clientX, y: e.clientY });
+			lastMousePosRef.current = { x: e.clientX, y: e.clientY };
 		}
-	}, [isDragging, lastMousePos]);
-
-	const handleMouseUp = useCallback(() => {
-		setIsDragging(false);
 	}, []);
 
-	// Animation and rendering
+	const handleMouseUp = useCallback(() => {
+		isDraggingRef.current = false;
+	}, []);
+
+	// Animation loop — runs once on mount, reads all mutable values from refs.
+	// Page Visibility API pauses the loop when the tab is hidden to save CPU.
 	useEffect(() => {
 		const canvas = canvasRef.current;
 		const ctx = canvas?.getContext('2d');
@@ -356,22 +344,22 @@ export function IconCloud({ icons, images }: IconCloudProps) {
 		const animate = () => {
 			ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-			const rect = canvas.getBoundingClientRect();
-			const canvasWidth = rect.width;
-			const canvasHeight = rect.height;
+			// Use cached size — avoids layout reflow every frame
+			const { width: canvasWidth, height: canvasHeight } = canvasSizeRef.current;
 			const centerX = canvasWidth / 2;
 			const centerY = canvasHeight / 2;
-			const maxDistance = Math.sqrt(
-				centerX * centerX + centerY * centerY
-			);
-			const dx = mousePos.x - centerX;
-			const dy = mousePos.y - centerY;
+			const maxDistance = Math.sqrt(centerX * centerX + centerY * centerY);
+
+			const { x: mx, y: my } = mousePosRef.current;
+			const dx = mx - centerX;
+			const dy = my - centerY;
 			const distance = Math.sqrt(dx * dx + dy * dy);
 			const { baseSpeed, maxSpeed } = paramsRef.current!;
 
 			const speed =
 				baseSpeed + (distance / maxDistance) * (maxSpeed - baseSpeed);
 
+			const targetRotation = targetRotationRef.current;
 			if (targetRotation) {
 				const elapsed = performance.now() - targetRotation.startTime;
 				const progress = Math.min(1, elapsed / targetRotation.duration);
@@ -389,9 +377,9 @@ export function IconCloud({ icons, images }: IconCloudProps) {
 				};
 
 				if (progress >= 1) {
-					setTargetRotation(null);
+					targetRotationRef.current = null;
 				}
-			} else if (!isDragging) {
+			} else if (!isDraggingRef.current) {
 				const dxNorm = dx / canvasWidth;
 				const dyNorm = dy / canvasHeight;
 
@@ -412,7 +400,7 @@ export function IconCloud({ icons, images }: IconCloudProps) {
 			const cosY = Math.cos(ry);
 			const sinY = Math.sin(ry);
 
-			iconPositions.forEach((icon, index) => {
+			iconPositionsRef.current.forEach((icon, index) => {
 				const rotatedX = icon.x * cosY - icon.z * sinY;
 				const rotatedZ = icon.x * sinY + icon.z * cosY;
 				const rotatedY = icon.y * cosX + rotatedZ * sinX;
@@ -431,12 +419,10 @@ export function IconCloud({ icons, images }: IconCloudProps) {
 				const drawY = Math.round(centerY + rotatedY);
 
 				ctx.translate(drawX, drawY);
-
 				ctx.scale(scale, scale);
 				ctx.globalAlpha = opacity;
 
 				if (icons || images) {
-					// Only try to render icons/images if they exist
 					if (
 						iconCanvasesRef.current[index] &&
 						imagesLoadedRef.current[index]
@@ -452,7 +438,6 @@ export function IconCloud({ icons, images }: IconCloudProps) {
 						);
 					}
 				} else {
-					// Show numbered circles if no icons/images are provided
 					ctx.beginPath();
 					ctx.arc(0, 0, 20, 0, Math.PI * 2);
 					ctx.fillStyle = '#4444ff';
@@ -466,17 +451,30 @@ export function IconCloud({ icons, images }: IconCloudProps) {
 
 				ctx.restore();
 			});
-			animationFrameRef.current = requestAnimationFrame(animate);
+
+			// Only schedule next frame when the tab is visible
+			if (!document.hidden) {
+				animationFrameRef.current = requestAnimationFrame(animate);
+			}
+		};
+
+		// Resume animation when tab becomes visible again
+		const handleVisibilityChange = () => {
+			if (!document.hidden) {
+				animationFrameRef.current = requestAnimationFrame(animate);
+			}
 		};
 
 		animate();
+		document.addEventListener('visibilitychange', handleVisibilityChange);
 
 		return () => {
 			if (animationFrameRef.current) {
 				cancelAnimationFrame(animationFrameRef.current);
 			}
+			document.removeEventListener('visibilitychange', handleVisibilityChange);
 		};
-	}, [icons, images, iconPositions, isDragging, mousePos, targetRotation]);
+	}, []); // Runs once — all mutable values are read from refs
 
 	return (
 		<canvas

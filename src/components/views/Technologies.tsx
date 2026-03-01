@@ -1,4 +1,4 @@
-import { memo, useMemo } from 'react';
+import { memo } from 'react';
 import { Label } from '../ui/label';
 import { IconCloud } from '../ui/icon-cloud';
 import { Badge } from '../ui/badge';
@@ -32,17 +32,12 @@ const TECHNOLOGIES_DATA = [
 	{ label: 'Go', icon: Icons.go },
 ];
 
+// Computed once at module level — these are static and never change
+const ICON_ELEMENTS = TECHNOLOGIES_DATA.map(({ label, icon: Icon }) => (
+	<Icon key={label} aria-hidden='true' />
+));
+
 const Technologies = memo(() => {
-	const technologies = useMemo(() => TECHNOLOGIES_DATA, []);
-
-	const iconElements = useMemo(
-		() =>
-			technologies.map(({ label, icon: Icon }) => (
-				<Icon key={label} aria-hidden='true' />
-			)),
-		[technologies]
-	);
-
 	return (
 		<div className='flex flex-col mb-8 mx-auto'>
 			<Label className='text-center text-xl pb-4'>
@@ -51,7 +46,7 @@ const Technologies = memo(() => {
 
 			<div className='flex pb-4 mx-auto'>
 				<div className='flex flex-wrap justify-center gap-2'>
-					{technologies.map(({ label }) => (
+					{TECHNOLOGIES_DATA.map(({ label }) => (
 						<Badge key={label} variant='secondary'>
 							{label}
 						</Badge>
@@ -61,7 +56,7 @@ const Technologies = memo(() => {
 
 			<div className='flex w-100 justify-center'>
 				<div className='w-full aspect-square max-w-[280px] sm:max-w-[360px] md:max-w-[480px] lg:max-w-[600px]'>
-					<IconCloud icons={iconElements} />
+					<IconCloud icons={ICON_ELEMENTS} />
 				</div>
 			</div>
 		</div>
