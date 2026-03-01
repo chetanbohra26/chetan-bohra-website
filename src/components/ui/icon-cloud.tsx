@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useMemo, useCallback } from 'react';
+import React, { useEffect, useRef, useCallback } from 'react';
 import { renderToString } from 'react-dom/server';
 
 interface Icon {
@@ -92,6 +92,9 @@ export function IconCloud({ icons, images }: IconCloudProps) {
 	// Cache canvas dimensions — updated on resize, avoids getBoundingClientRect every frame
 	const canvasSizeRef = useRef({ width: 0, height: 0 });
 
+	// Tracked in a ref so the useEffect cleanup can cancel a pending debounced call on unmount
+	const resizeTimeoutRef = useRef<ReturnType<typeof setTimeout> | undefined>(undefined);
+
 	const updateCanvasSize = useCallback(() => {
 		const canvas = canvasRef.current;
 		if (!canvas) return;
@@ -112,13 +115,10 @@ export function IconCloud({ icons, images }: IconCloudProps) {
 		paramsRef.current = getParamsForSize(rect.width);
 	}, []);
 
-	// Debounce resize handler for better performance
-	const debouncedResize = useMemo(() => {
-		let timeoutId: ReturnType<typeof setTimeout>;
-		return () => {
-			clearTimeout(timeoutId);
-			timeoutId = setTimeout(updateCanvasSize, 150);
-		};
+	// Debounce resize handler — timeoutId stored in a ref so it can be cleared on unmount
+	const debouncedResize = useCallback(() => {
+		clearTimeout(resizeTimeoutRef.current);
+		resizeTimeoutRef.current = setTimeout(updateCanvasSize, 150);
 	}, [updateCanvasSize]);
 
 	useEffect(() => {
@@ -126,6 +126,7 @@ export function IconCloud({ icons, images }: IconCloudProps) {
 		window.addEventListener('resize', debouncedResize);
 		return () => {
 			window.removeEventListener('resize', debouncedResize);
+			clearTimeout(resizeTimeoutRef.current);
 		};
 	}, [updateCanvasSize, debouncedResize]);
 
@@ -220,6 +221,9 @@ export function IconCloud({ icons, images }: IconCloudProps) {
 		const offset = 2 / numIcons;
 		const increment = Math.PI * (3 - Math.sqrt(5));
 
+		if (!paramsRef.current) return;
+		const { radius } = paramsRef.current;
+
 		for (let i = 0; i < numIcons; i++) {
 			const y = i * offset - 1 + offset / 2;
 			const r = Math.sqrt(1 - y * y);
@@ -228,7 +232,6 @@ export function IconCloud({ icons, images }: IconCloudProps) {
 			const x = Math.cos(phi) * r;
 			const z = Math.sin(phi) * r;
 
-			const { radius } = paramsRef.current!;
 			newIcons.push({
 				x: x * radius,
 				y: y * radius,
