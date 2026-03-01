@@ -112,12 +112,12 @@ const PROJECTS_DATA = [
 
 const Projects = memo(() => {
 	return (
-		<div className='flex flex-col mb-4 mx-auto'>
+		<div className='flex flex-col mb-4 w-full'>
 			<Label className='text-center text-xl mb-4'>
 				Cool stuff I have worked on
 			</Label>
 
-			<div className='flex grid grid-cols-1 gap-4 mx-auto'>
+			<div className='grid grid-cols-1 gap-4'>
 				{PROJECTS_DATA.map((proj) => (
 					<Card className='w-100 flex flex-col' key={proj.title}>
 						<CardHeader className='pb-2'>

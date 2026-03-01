@@ -39,12 +39,12 @@ const ICON_ELEMENTS = TECHNOLOGIES_DATA.map(({ label, icon: Icon }) => (
 
 const Technologies = memo(() => {
 	return (
-		<div className='flex flex-col mb-8 mx-auto'>
+		<div className='flex flex-col mb-8 w-full'>
 			<Label className='text-center text-xl pb-4'>
 				These are few of my magic ingredients
 			</Label>
 
-			<div className='flex pb-4 mx-auto'>
+			<div className='w-full pb-4'>
 				<div className='flex flex-wrap justify-center gap-2'>
 					{TECHNOLOGIES_DATA.map(({ label }) => (
 						<Badge key={label} variant='secondary'>
@@ -54,7 +54,7 @@ const Technologies = memo(() => {
 				</div>
 			</div>
 
-			<div className='flex w-100 justify-center'>
+			<div className='flex w-full justify-center'>
 				<div className='w-full aspect-square max-w-[280px] sm:max-w-[360px] md:max-w-[480px] lg:max-w-[600px]'>
 					<IconCloud icons={ICON_ELEMENTS} />
 				</div>
