@@ -30,13 +30,15 @@ const Content = () => {
 
 			<Separator className='w-2/3 mx-auto my-8' />
 
-			<Projects />
+			<div className='flex flex-col w-full max-w-2xl mx-auto'>
+				<Projects />
 
-			<Separator className='w-2/3 mx-auto my-8' />
+				<Separator className='w-2/3 mx-auto my-8' />
 
-			<Suspense fallback={<div className='min-h-[400px]' />}>
-				<Technologies />
-			</Suspense>
+				<Suspense fallback={<div className='min-h-[400px]' />}>
+					<Technologies />
+				</Suspense>
+			</div>
 
 			<Separator className='w-2/3 mx-auto mt-8' />
 
