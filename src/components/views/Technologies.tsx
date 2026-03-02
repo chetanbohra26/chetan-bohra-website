@@ -39,7 +39,7 @@ const ICON_ELEMENTS = TECHNOLOGIES_DATA.map(({ label, icon: Icon }) => (
 
 const Technologies = memo(() => {
 	return (
-		<div className='flex flex-col mb-8 w-full'>
+		<div className='flex flex-col mb-8 w-full max-w-2xl lg:max-w-4xl mx-auto'>
 			<Label className='text-center text-xl pb-4'>
 				These are few of my magic ingredients
 			</Label>
