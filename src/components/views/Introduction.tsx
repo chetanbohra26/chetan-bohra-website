@@ -37,7 +37,7 @@ const Introduction = memo(() => {
 			<div className='flex flex-col justify-center'>
 				<Label className='font-virgil text-center md:text-start text-4xl pt-4'>
 					<span className='italic'>Hello,</span> I am{' '}
-					<span className='text-green-500 hover:text-lime-300'>
+					<span className='inline-block min-h-[1.2em] text-green-500 hover:text-lime-300'>
 						<TypeAnimation
 							sequence={TYPE_ANIMATION_SEQUENCE}
 							repeat={Infinity}
