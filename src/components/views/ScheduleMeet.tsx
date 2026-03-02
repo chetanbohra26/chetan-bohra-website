@@ -11,6 +11,21 @@ const ScheduleMeet = memo(() => {
 		const observer = new IntersectionObserver(
 			(entries) => {
 				if (entries[0].isIntersecting) {
+					// Inject preconnect hints right before the widget loads
+					const hints: HTMLLinkElement[] = [];
+					for (const [rel, href, crossorigin] of [
+						['dns-prefetch', 'https://assets.calendly.com', false],
+						['preconnect', 'https://assets.calendly.com', true],
+						['dns-prefetch', 'https://calendly.com', false],
+						['preconnect', 'https://calendly.com', true],
+					] as [string, string, boolean][]) {
+						const link = document.createElement('link');
+						link.rel = rel;
+						link.href = href;
+						if (crossorigin) link.crossOrigin = 'anonymous';
+						document.head.appendChild(link);
+						hints.push(link);
+					}
 					setShouldLoad(true);
 					observer.disconnect();
 				}
