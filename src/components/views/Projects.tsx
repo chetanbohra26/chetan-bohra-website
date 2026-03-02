@@ -112,7 +112,7 @@ const PROJECTS_DATA = [
 
 const Projects = memo(() => {
 	return (
-		<div className='flex flex-col mb-4 mx-auto w-full max-w-2xl'>
+		<div className='flex flex-col mb-4 mx-auto w-full max-w-2xl lg:max-w-4xl'>
 			<Label className='text-center text-xl mb-4'>
 				Cool stuff I have worked on
 			</Label>
