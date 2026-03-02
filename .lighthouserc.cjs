@@ -4,6 +4,7 @@ module.exports = {
 			// LHCI serves ./dist directly — no separate server needed
 			staticDistDir: './dist',
 			numberOfRuns: 3,
+			settings: { preset: 'desktop' },
 		},
 		assert: {
 			assertions: {
