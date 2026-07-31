@@ -477,7 +477,8 @@ export function IconCloud({ icons, images }: IconCloudProps) {
 			}
 			document.removeEventListener('visibilitychange', handleVisibilityChange);
 		};
-	}, []); // Runs once — all mutable values are read from refs
+		// eslint-disable-next-line react-hooks/exhaustive-deps -- runs once, all mutable values are read from refs
+	}, []);
 
 	return (
 		<canvas

@@ -1,6 +1,31 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import 'tailwindcss';
+@config '../tailwind.config.js';
+
+/*
+ * Tailwind v4 dropped automatic centering/max-width from the `container`
+ * utility, so the old JS config's `theme.container` (center: true, screens:
+ * { '2xl': '1400px' }) no longer has any effect. Restoring it explicitly.
+ */
+@utility container {
+	margin-inline: auto;
+	max-width: 100%;
+
+	@media (width >= 40rem) {
+		max-width: 40rem;
+	}
+	@media (width >= 48rem) {
+		max-width: 48rem;
+	}
+	@media (width >= 64rem) {
+		max-width: 64rem;
+	}
+	@media (width >= 80rem) {
+		max-width: 80rem;
+	}
+	@media (width >= 1400px) {
+		max-width: 1400px;
+	}
+}
 
 @layer base {
 	@font-face {
