@@ -1,7 +1,6 @@
 import { lazy, Suspense } from 'react';
 import Introduction from './Introduction';
 import Projects from './Projects';
-import { Label } from '../ui/label';
 import { Separator } from '../ui/separator';
 
 // Lazy load below-the-fold components
@@ -15,8 +14,8 @@ const Content = () => {
 
 			<Separator className='w-2/3 mx-auto my-8' />
 
-			<Label className='text-center text-xl'>
-				Senior Software Engineer at{' '}
+			{/* <Label className='text-center text-xl'>
+				Technical Lead at{' '}
 				<a
 					href='https://squareboat.com'
 					target='_blank'
@@ -26,9 +25,7 @@ const Content = () => {
 				>
 					Squareboat
 				</a>
-			</Label>
-
-			<Separator className='w-2/3 mx-auto my-8' />
+			</Label> */}
 
 			<Projects />
 

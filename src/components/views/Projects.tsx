@@ -119,7 +119,7 @@ const Projects = memo(() => {
 
 			<div className='grid grid-cols-1 gap-4'>
 				{PROJECTS_DATA.map((proj) => (
-					<Card className='w-100 flex flex-col' key={proj.title}>
+					<Card className='w-full flex flex-col' key={proj.title}>
 						<CardHeader className='pb-2'>
 							<CardTitle
 								className={`flex text-green-500 ${

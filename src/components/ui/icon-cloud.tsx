@@ -425,7 +425,7 @@ export function IconCloud({ icons, images }: IconCloudProps) {
 				ctx.scale(scale, scale);
 				ctx.globalAlpha = opacity;
 
-				if (icons || images) {
+				if (iconCanvasesRef.current.length > 0) {
 					if (
 						iconCanvasesRef.current[index] &&
 						imagesLoadedRef.current[index]
@@ -477,7 +477,7 @@ export function IconCloud({ icons, images }: IconCloudProps) {
 			}
 			document.removeEventListener('visibilitychange', handleVisibilityChange);
 		};
-	}, []); // Runs once — all mutable values are read from refs
+	}, []);
 
 	return (
 		<canvas

@@ -26,7 +26,7 @@ const Introduction = memo(() => {
 				<Avatar className='w-[200px] h-[200px] xxs:w-[250px] xxs:h-[250px] sm:w-[300px] sm:h-[300px] mx-auto'>
 					<AvatarImage
 						src={profileImg}
-						alt='Chetan Bohra - Senior Software Engineer'
+						alt='Chetan Bohra - Technical Lead'
 						fetchPriority='high'
 						loading='eager'
 					/>
